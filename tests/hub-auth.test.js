@@ -124,6 +124,49 @@ describe("Evidence Hub access gate", () => {
     assert.match(result.headers.get("set-cookie"), /HttpOnly/);
   });
 
+  it("accepts same-origin browser metadata with a public Origin and internal Vercel hosts", async () => {
+    setTestCredentials();
+    for (const origin of ["https://evidencehub-fawn.vercel.app", "invalid-origin"]) {
+      const result = await proxy(request("/__hub/login", {
+        url: "https://internal-vercel.invalid/__hub/login",
+        method: "POST",
+        headers: {
+          host: "internal-vercel.invalid",
+          "x-forwarded-host": "internal-vercel.invalid",
+          origin,
+          "sec-fetch-site": "same-origin",
+          "content-type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          email: "reviewer@example.invalid",
+          password: ["synthetic", "test", "password", "only"].join("-"),
+        }),
+      }));
+      assert.equal(result.status, 303, origin);
+      assert.equal(result.headers.get("location"), "/", origin);
+      assert.match(result.headers.get("set-cookie"), /HttpOnly/);
+    }
+  });
+
+  it("rejects mismatched or malformed Origin without exact same-origin metadata", async () => {
+    setTestCredentials();
+    for (const origin of ["https://attacker.invalid", "invalid-origin"]) {
+      for (const site of ["cross-site", "same-site", "Same-Origin"]) {
+        const result = await proxy(request("/__hub/login", {
+          method: "POST",
+          headers: {
+            origin,
+            "sec-fetch-site": site,
+            referer: "https://hub.example.invalid/login",
+            "content-type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ email: "reviewer@example.invalid", password: "wrong-password" }),
+        }));
+        assert.equal(result.status, 403, `${origin}: ${site}`);
+      }
+    }
+  });
+
   it("accepts same-origin browser metadata when Origin is omitted", async () => {
     setTestCredentials();
     const body = new URLSearchParams({

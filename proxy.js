@@ -134,13 +134,15 @@ function sameOrigin(request, url) {
     .filter(Boolean);
 
   const origin = request.headers.get("origin");
-  if (origin) {
+  if (origin !== null) {
     try {
       const parsed = new URL(origin);
-      return parsed.protocol === "https:" && candidates.includes(parsed.host.toLowerCase());
+      if (parsed.protocol === "https:" && candidates.includes(parsed.host.toLowerCase())) return true;
     } catch {
-      return false;
+      // Fall back to browser metadata when Origin cannot be parsed.
     }
+    // Vercel can rewrite every request host while preserving the public Origin.
+    return request.headers.get("sec-fetch-site") === "same-origin";
   }
 
   // Some Vercel proxy requests omit Origin. Browser fetch metadata or Referer
