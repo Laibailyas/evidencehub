@@ -1,0 +1,301 @@
+/* plusquam — sign-in page (premium split layout) */
+
+.signin-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pq-space-5);
+  position: relative;
+  overflow: hidden;
+  background: var(--pq-bg);
+}
+
+/* Signature mesh gradient */
+.signin-mesh {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(45% 55% at 12% 15%, rgba(60, 69, 232, 0.35), transparent 60%),
+    radial-gradient(40% 45% at 85% 10%, rgba(110, 118, 245, 0.16), transparent 60%),
+    radial-gradient(55% 50% at 75% 90%, rgba(110, 118, 245, 0.22), transparent 65%),
+    radial-gradient(35% 40% at 15% 90%, rgba(60, 69, 232, 0.14), transparent 60%);
+  filter: blur(10px);
+  animation: pq-mesh-drift 22s ease-in-out infinite alternate;
+}
+@keyframes pq-mesh-drift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(-2%, 2%, 0) scale(1.06); }
+}
+
+/* Faint grid for structure/depth */
+.signin-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+}
+
+/* ─── Language switcher (top-right) ─────────────────────────── */
+.lang-switcher {
+  position: absolute;
+  top: var(--pq-space-5);
+  right: var(--pq-space-5);
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--pq-border);
+  border-radius: var(--pq-radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  z-index: 3;
+}
+.lang-switcher button {
+  padding: 6px 12px;
+  color: var(--pq-text-muted);
+  border-radius: var(--pq-radius-full);
+  transition: color 0.2s, background-color 0.2s;
+}
+.lang-switcher button[aria-pressed="true"] {
+  color: var(--pq-text);
+  background: rgba(255, 255, 255, 0.10);
+}
+.lang-switcher button:hover { color: var(--pq-text); }
+
+/* ─── Stage: two-column split ───────────────────────────────── */
+.signin-stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right: sign-in card */
+.signin-container {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+  animation: pq-rise 0.7s 0.08s var(--pq-ease) both;
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow:
+    0 30px 80px -20px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 24px 60px -30px rgba(60,69,232,0.35);
+}
+
+@keyframes pq-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Logo (shown above the card) ───────────────────────────── */
+.signin-logo--mobile { display: flex; justify-content: center; margin-bottom: var(--pq-space-5); }
+.signin-logo--mobile img { height: 34px; width: auto; }
+
+/* ─── Headings ─────────────────────────────────────────────── */
+.signin-heading {
+  text-align: left;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--pq-space-2);
+}
+
+.signin-workspace {
+  text-align: left;
+  font-size: 13px;
+  color: var(--pq-text-muted);
+  margin-bottom: var(--pq-space-6);
+}
+
+/* ─── Role toggle (Nutzer / Admin) ──────────────────────────── */
+.role-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--pq-border);
+  border-radius: var(--pq-radius-full);
+  margin-bottom: var(--pq-space-6);
+}
+
+.role-toggle button {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pq-text-muted);
+  border-radius: var(--pq-radius-full);
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.role-toggle button.active {
+  background: linear-gradient(135deg, var(--pq-primary), var(--pq-primary-light));
+  color: #fff;
+  box-shadow: 0 6px 18px -6px rgba(60,69,232,0.6);
+}
+
+.role-toggle button:not(.active):hover { color: var(--pq-text); }
+
+/* ─── Form ──────────────────────────────────────────────────── */
+.form-group { margin-bottom: var(--pq-space-4); }
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--pq-text-muted);
+  margin-bottom: var(--pq-space-2);
+}
+
+.form-input {
+  width: 100%;
+  padding: 13px 20px;
+  background: var(--pq-input-bg);
+  color: var(--pq-input-text);
+  border: 1px solid transparent;
+  border-radius: var(--pq-radius-full);
+  font-size: 14px;
+  transition: box-shadow 0.18s var(--pq-ease), border-color 0.18s, transform 0.18s var(--pq-ease);
+}
+
+.form-input::placeholder { color: var(--pq-input-placeholder); }
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--pq-input-border-focus);
+  box-shadow: var(--pq-shadow-focus);
+  transform: translateY(-1px);
+}
+
+.form-forgot {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: var(--pq-text-muted);
+  margin-top: var(--pq-space-2);
+  transition: color 0.2s;
+}
+
+.form-forgot:hover { color: var(--pq-text); }
+
+.form-forgot-msg {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--pq-text-muted);
+}
+
+/* ─── Submit button ─────────────────────────────────────────── */
+.signin-button {
+  width: 100%;
+  margin-top: var(--pq-space-5);
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--pq-primary), var(--pq-primary-light));
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-radius: var(--pq-radius-full);
+  box-shadow: 0 10px 28px -8px rgba(60,69,232,0.55);
+  transition: transform 0.18s var(--pq-ease), box-shadow 0.18s var(--pq-ease), filter 0.15s;
+}
+.signin-button::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+  background-size: 220% 100%;
+  background-position: 130% 0;
+  transition: background-position 0.6s var(--pq-ease);
+  pointer-events: none;
+}
+.signin-button:hover::before { background-position: -30% 0; }
+.signin-button:hover  { transform: translateY(-2px) scale(1.01); box-shadow: 0 16px 36px -8px rgba(60,69,232,0.65); filter: brightness(1.05); }
+.signin-button:active { transform: translateY(0) scale(0.99); }
+
+/* ─── EU notice ─────────────────────────────────────────────── */
+.eu-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pq-space-2);
+  margin-top: var(--pq-space-4);
+  font-size: 12px;
+  color: var(--pq-text-muted);
+}
+.eu-notice svg {
+  color: var(--pq-primary-light);
+  flex-shrink: 0;
+}
+
+/* ─── Feature bullet list (left panel) ──────────────────────── */
+.feature-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--pq-border), transparent);
+  margin: var(--pq-space-6) 0 var(--pq-space-5);
+  max-width: 420px;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pq-space-4);
+  font-size: 14px;
+  color: var(--pq-text-muted);
+}
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--pq-space-3);
+}
+.feature-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--pq-primary), var(--pq-primary-light));
+  box-shadow: 0 0 0 4px rgba(60,69,232,0.10);
+  position: relative;
+}
+.feature-dot::after {
+  content: '';
+  position: absolute; inset: 0; margin: auto;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #fff;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 880px) {
+  .signin-container { padding: 32px 26px; }
+}
+
+@media (max-width: 480px) {
+  .lang-switcher { top: var(--pq-space-3); right: var(--pq-space-3); }
+  .signin-heading { font-size: 22px; }
+  .signin-container { border-radius: 18px; }
+}
+
+/* Error slot styles remain compatible with a strict style-src policy. */
+.signin-error-message {
+  color: #DC2626;
+  font-size: 13px;
+  margin: 10px 0 0;
+  display: none;
+}

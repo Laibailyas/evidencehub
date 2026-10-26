@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plusquam Evidence Hub</title>
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="Reports, results and visuals for the Plusquam milestone.">
+<meta name="theme-color" content="#0C3FE8"><link rel="icon" type="image/png" href="assets/favicon.png"><link rel="apple-touch-icon" href="assets/favicon.png">
+<style>
+@font-face{font-family:"Numans";src:url(assets/Numans-Regular.ttf) format("truetype");font-display:swap}
+:root{--ink:#051857;--blue:#0C3FE8;--light:#94ACF9;--tint:#EEF2FF;--bord:#DCE3FB;--gray:#55608A;--green:#1EA078}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Numans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.hero{position:relative;margin:0;border-radius:0;overflow:hidden;background:#dfe3f3 url(assets/gradient.jpg) center/cover no-repeat;color:var(--ink)}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.38) 42%,rgba(255,255,255,0) 72%)}
+.hero>*{position:relative}
+nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+nav img{height:36px;width:auto;display:block}
+.links{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);padding:6px;border-radius:99px}
+.links a{text-decoration:none;font-size:15px;padding:9px 18px;border-radius:99px;color:var(--ink);transition:background .2s}
+.links a:not(.env):hover{background:rgba(255,255,255,.85)}
+.links .env{background:var(--ink);color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;font-weight:700}
+.hub-logout{margin-left:8px}.hub-logout button{border:1px solid rgba(23,69,209,.25);border-radius:99px;background:#fff;color:#1745d1;padding:10px 15px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.hero .in{padding:84px 0 36px}
+.chip{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.8);padding:9px 16px;border-radius:99px;color:var(--blue)}
+h1{font-size:clamp(46px,9vw,108px);line-height:1;margin:22px 0 22px;font-weight:700;letter-spacing:-.025em}
+.lead{font-size:clamp(18px,2.3vw,24px);color:#1d2a6b;max-width:580px;margin:0 0 34px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-size:15px;padding:12px 24px;border-radius:99px;font-weight:700;transition:transform .18s,box-shadow .18s;box-shadow:0 8px 22px -10px rgba(12,63,232,.7)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(12,63,232,.8)}
+.btn.ghost{background:transparent;color:var(--blue);box-shadow:inset 0 0 0 2px var(--bord)}.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--light)}
+.btn.glass{background:rgba(255,255,255,.6);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.85)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 0 32px}
+.stat{background:rgba(255,255,255,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);border-radius:24px;padding:24px 20px;text-align:center}
+.stat b{display:block;font-size:clamp(30px,4vw,46px);line-height:1.1;color:var(--blue)}
+.stat span{display:block;margin-top:6px;font-size:15px;color:var(--gray)}
+section{padding:92px 0 0}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;margin:0 0 10px}
+h2{font-size:clamp(30px,4.6vw,48px);line-height:1.1;margin:0 0 12px;font-weight:700;letter-spacing:-.015em}
+.sec p.d{color:var(--gray);font-size:18px;margin:0 0 34px;max-width:560px}
+.checks{list-style:none;margin:0;padding:10px;background:var(--tint);border-radius:28px;display:grid;gap:6px}
+.checks li{display:flex;align-items:center;gap:18px;background:#fff;border-radius:20px;padding:18px 22px}
+.checks li div{flex:1;min-width:0}.checks b{display:block;font-size:18px}.checks div span{color:var(--gray);font-size:15px}
+.checks em{font-style:normal;background:#E4F6EF;color:#14805F;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:99px;font-weight:700}
+.ck{width:38px;height:38px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:none}
+.ck svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}.s2{grid-column:span 2}.s3{grid-column:span 3}
+.card{background:var(--tint);border-radius:28px;padding:28px}
+.rep{display:flex;flex-direction:column;gap:20px;transition:transform .25s,box-shadow .25s}
+.rep:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(5,24,87,.4)}
+.ico{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#0C3FE8,#4B6CF2);display:grid;place-items:center}
+.ico svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rb{flex:1}.rep h3{margin:10px 0 8px;font-size:22px;line-height:1.2}.rep p{margin:0;color:var(--gray);font-size:15.5px}
+.tag{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.vis{margin:0;background:var(--tint);border-radius:28px;overflow:hidden;cursor:zoom-in;transition:transform .25s,box-shadow .25s;outline:none}
+.vis:hover,.vis:focus-visible{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(5,24,87,.4)}
+.vis .shot{padding:10px 10px 0}.vis img{display:block;width:100%;height:auto;border-radius:20px;background:#fff}
+.vis figcaption{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 24px 22px}
+.vis b{display:block;font-size:19px}.vis figcaption span:not(.expand){color:var(--gray);font-size:14.5px}
+.expand{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.expand svg{width:18px;height:18px;fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.live{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.live .card{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.live h3{margin:6px 0 4px;font-size:22px}.live p{margin:0;color:var(--gray);font-size:15px}
+footer{margin:96px 14px 14px;border-radius:32px;background:var(--tint);color:var(--ink);padding:36px 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer img{height:36px;filter:none}footer span{font-size:14.5px}
+.lb{position:fixed;inset:0;background:rgba(5,24,87,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+.lb.on{display:flex}.lb .box{background:#fff;border-radius:28px;max-width:1240px;width:100%;max-height:100%;overflow:auto;padding:14px}
+.lb img{display:block;width:100%;height:auto;border-radius:18px}
+.lb .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 10px 6px}
+.lb .bar b{font-size:18px}.lb .bar div{display:flex;gap:8px}
+.lb button{border:0;cursor:pointer;font:inherit}.x{background:var(--tint);color:var(--ink);border-radius:99px;padding:11px 20px;font-weight:700;font-size:15px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:900px){.links a:not(.env){display:none}.stats{grid-template-columns:repeat(2,1fr)}.grid6{grid-template-columns:1fr}.s2,.s3{grid-column:auto}.live{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:0 18px}.hero{margin:0;border-radius:0}.hero .in{padding:52px 0 24px}.links{padding:4px}.links .env{padding:9px 14px;font-size:11px}.checks li{display:grid;grid-template-columns:38px 1fr;align-items:start;padding:16px}.checks em{grid-column:2;justify-self:start}.card{padding:22px}.vis figcaption{padding:16px 18px 18px}section{padding-top:68px}footer{margin:72px 8px 8px}}
+
+/* Consistent report and visual grids */
+#reports .grid6{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+#reports .grid6>*{grid-column:auto}
+#visuals .grid6{grid-template-columns:repeat(6,minmax(0,1fr))}
+#visuals .grid6>*{grid-column:span 2}
+#visuals .grid6>:nth-child(4){grid-column:2/span 2}
+#visuals .grid6>:nth-child(5){grid-column:4/span 2}
+/* Keep hover states legible and movement smooth */
+.links .env:hover,.links .env:focus-visible{background:var(--blue);color:#fff;box-shadow:0 8px 20px -10px rgba(12,63,232,.8)}
+.links a,.btn,.hub-logout button{transition:background-color .28s cubic-bezier(.22,1,.36,1),color .28s cubic-bezier(.22,1,.36,1),transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s cubic-bezier(.22,1,.36,1)}
+#reports .rep,#visuals .vis{transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s cubic-bezier(.22,1,.36,1)}
+#reports .rep:hover,#visuals .vis:hover,#visuals .vis:focus-visible{transform:translateY(-3px);box-shadow:0 20px 38px -22px rgba(5,24,87,.36)}
+@media(max-width:1100px){#visuals .grid6{grid-template-columns:repeat(3,minmax(0,1fr))}#visuals .grid6>*{grid-column:auto}}
+@media(max-width:900px){#reports .grid6,#visuals .grid6{grid-template-columns:1fr}#reports .grid6>*,#visuals .grid6>*{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){#reports .rep,#visuals .vis,#reports .rep:hover,#visuals .vis:hover,#visuals .vis:focus-visible{transform:none;transition:none;box-shadow:none}}
+</style></head>
+<body>
+<header class="hero"><div class="wrap">
+<nav><img src="assets/logo.png" alt="KRKL"><div class="links"><a href="#overview">Overview</a><a href="#reports">Reports</a><a href="#visuals">Visuals</a><a href="#source">Source</a><a href="#reports">Sign-off</a><a href="#links">Links</a><a class="env" href="#links">Staging</a></div><form class="hub-logout" action="/__hub/logout" method="post"><button type="submit">Sign out</button></form></nav>
+<div class="in"><span class="chip">Plusquam · Milestone delivery</span><h1>Evidence Hub</h1><p class="lead">Reports, results and visuals for the Plusquam milestone, in one place.</p>
+<div class="cta"><a class="btn" href="#reports">View reports</a><a class="btn glass" href="https://d1oclzd35kpvog.cloudfront.net/" target="_blank" rel="noopener">Open staging app</a></div></div>
+<div class="stats"><div class="stat"><b>9/9</b><span>findings fixed</span></div><div class="stat"><b>11/11</b><span>security checks passed</span></div><div class="stat"><b>12/12</b><span>UAT scenarios passed</span></div><div class="stat"><b>Qwen</b><span>integration verified</span></div></div>
+</div></header>
+<main class="wrap">
+<section id="overview" class="sec"><p class="eyebrow">Milestone checklist</p><h2>Staging deliverables</h2><p class="d">Security, UAT, model evidence, source code and visuals for the tested staging environment. Updated 26 October 2026.</p><ul class="checks"><li class="reveal"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Security audit and fixes</b><span>9 of 9 findings fixed and verified. 11 of 11 security checks passed.</span></div><em>Complete</em></li><li class="reveal"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>User acceptance testing</b><span>12 of 12 scenarios passed with standard and admin accounts.</span></div><em>Complete</em></li><li class="reveal"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Qwen integration</b><span>Verified, with a side-by-side comparison on 30 identical assessments.</span></div><em>Complete</em></li><li class="reveal"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Visual Pack</b><span>Five visuals as PNG and SVG, bundled into one PDF.</span></div><em>Complete</em></li><li class="reveal"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>Evidence Hub</b><span>This page, with every report and visual in one place.</span></div><em>Complete</em></li></ul></section>
+<section id="reports" class="sec"><p class="eyebrow">Reports</p><h2>Read or download</h2><p class="d">The full documents behind every result.</p><div class="grid6"><article class="card rep reveal s2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><div class="rb"><span class="tag">8 pages · PDF</span><h3>Security Audit and Remediation Report</h3><p>Nine findings, all fixed and verified. Eleven security checks passed.</p></div><div class="btns"><a class="btn" href="reports/Plusquam_Staging_Security_Audit_Report.pdf" target="_blank" rel="noopener">Open</a><a class="btn ghost" href="reports/Plusquam_Staging_Security_Audit_Report.pdf" download>Download</a></div></article><article class="card rep reveal s2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><div class="rb"><span class="tag">4 pages · PDF</span><h3>UAT Report</h3><p>Twelve user scenarios, with the observed outcome of each.</p></div><div class="btns"><a class="btn" href="reports/Plusquam_Staging_UAT_Report.pdf" target="_blank" rel="noopener">Open</a><a class="btn ghost" href="reports/Plusquam_Staging_UAT_Report.pdf" download>Download</a></div></article><article class="card rep reveal s2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><div class="rb"><span class="tag">Fillable PDF</span><h3>UAT sign-off checklist</h3><p>Client review and acceptance of the completed staging UAT.</p></div><div class="btns"><a class="btn" href="reports/Plusquam_Staging_UAT_Acceptance_Signoff.pdf" download>Download checklist</a></div></article><article class="card rep reveal s2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><div class="rb"><span class="tag">2 pages · PDF</span><h3>Model Comparison Summary</h3><p>Qwen and Groq on 30 identical assessments: quality, speed and cost.</p></div><div class="btns"><a class="btn" href="reports/Plusquam_Qwen_Groq_Model_Comparison_Summary.pdf" target="_blank" rel="noopener">Open</a><a class="btn ghost" href="reports/Plusquam_Qwen_Groq_Model_Comparison_Summary.pdf" download>Download</a></div></article><article class="card rep reveal s3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><div class="rb"><span class="tag">6 pages · PDF</span><h3>Model Evaluation Report</h3><p>Frozen exam set: 77 of 80 correct (96.2%), with method and error analysis.</p></div><div class="btns"><a class="btn" href="reports/Plusquam_Frozen_Model_Evaluation_Report.pdf" target="_blank" rel="noopener">Open</a><a class="btn ghost" href="reports/Plusquam_Frozen_Model_Evaluation_Report.pdf" download>Download</a></div></article><article class="card rep reveal s3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><div class="rb"><span class="tag">5 pages · PDF</span><h3>Visual Pack (PDF)</h3><p>Architecture, data flow, security, UAT and roadmap in one file.</p></div><div class="btns"><a class="btn" href="reports/Plusquam_Visual_Pack.pdf" target="_blank" rel="noopener">Open</a><a class="btn ghost" href="reports/Plusquam_Visual_Pack.pdf" download>Download</a></div></article></div></section>
+<section id="source" class="sec"><p class="eyebrow">Source code</p><h2>Plusquam staging code</h2><p class="d">Backend, frontend, deployment scripts and build inputs in one organized package.</p><div class="live"><div class="card reveal"><div><span class="tag">Full source package</span><h3>Backend and frontend</h3><p>Includes source files, build inputs, lockfiles and deployment scripts. Generated build folders are omitted.</p></div><div class="btns"><a class="btn" href="code/Plusquam_Staging_Source_Code.zip" download>Download source ZIP</a><a class="btn ghost" href="code/Plusquam-Staging-Deployment/README.md" target="_blank" rel="noopener">View README</a></div></div></div></section>
+<section id="visuals" class="sec"><p class="eyebrow">Visual Pack</p><h2>Five visuals, brand matched</h2><p class="d">Select a visual to enlarge it. Each is available as PNG and SVG.</p><div class="grid6"><figure class="vis reveal s3" data-n="01_System_Architecture" data-t="System architecture" tabindex="0" role="button" aria-label="Open System architecture"><div class="shot"><img src="assets/visuals/01_System_Architecture_thumb.jpg" alt="System architecture" loading="lazy"></div><figcaption><div><b>System architecture</b><span>How the staging environment is put together</span></div><span class="expand"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></figcaption></figure><figure class="vis reveal s3" data-n="02_Data_and_Request_Flow" data-t="Data and request flow" tabindex="0" role="button" aria-label="Open Data and request flow"><div class="shot"><img src="assets/visuals/02_Data_and_Request_Flow_thumb.jpg" alt="Data and request flow" loading="lazy"></div><figcaption><div><b>Data and request flow</b><span>From a new project to a finished report</span></div><span class="expand"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></figcaption></figure><figure class="vis reveal s2" data-n="03_Security_Posture" data-t="Security posture" tabindex="0" role="button" aria-label="Open Security posture"><div class="shot"><img src="assets/visuals/03_Security_Posture_thumb.jpg" alt="Security posture" loading="lazy"></div><figcaption><div><b>Security posture</b><span>Findings, checks and data protection at a glance</span></div><span class="expand"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></figcaption></figure><figure class="vis reveal s2" data-n="04_UAT_Results" data-t="UAT results" tabindex="0" role="button" aria-label="Open UAT results"><div class="shot"><img src="assets/visuals/04_UAT_Results_thumb.jpg" alt="UAT results" loading="lazy"></div><figcaption><div><b>UAT results</b><span>All 12 scenarios and their outcome</span></div><span class="expand"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></figcaption></figure><figure class="vis reveal s2" data-n="05_Roadmap_and_Timeline" data-t="Roadmap and timeline" tabindex="0" role="button" aria-label="Open Roadmap and timeline"><div class="shot"><img src="assets/visuals/05_Roadmap_and_Timeline_thumb.jpg" alt="Roadmap and timeline" loading="lazy"></div><figcaption><div><b>Roadmap and timeline</b><span>Milestones and delivery</span></div><span class="expand"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></figcaption></figure></div></section>
+<section id="links" class="sec"><p class="eyebrow">Live links</p><h2>Staging environment</h2><p class="d">Open the application as the milestone was tested.</p><div class="live">
+<div class="card reveal"><div><span class="tag">Application</span><h3>Plusquam staging app</h3><p>The assessment platform.</p></div><a class="btn" href="https://d1oclzd35kpvog.cloudfront.net/" target="_blank" rel="noopener">Open app</a></div>
+<div class="card reveal"><div><span class="tag">Sign in</span><h3>Plusquam sign-in page</h3><p>Standard and admin accounts.</p></div><a class="btn" href="https://d2n3raooroaaoo.cloudfront.net/signin.html" target="_blank" rel="noopener">Open sign-in</a></div></div></section>
+</main>
+<footer><div class="wrap"><img class="footer-logo" src="assets/logo.png" alt="KRKL"><span>Plusquam Evidence Hub &nbsp;·&nbsp; Staging environment &nbsp;·&nbsp; 26 October 2026</span></div></footer>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><div class="box"><img id="lbi" alt=""><div class="bar"><b id="lbt"></b><div><a class="btn ghost" id="lbp" download>PNG</a><a class="btn ghost" id="lbs" download>SVG</a><button class="x" id="lbx">Close</button></div></div></div></div>
+<script>
+(function(){
+var lb=document.getElementById('lb'),i=document.getElementById('lbi');
+function open(f){var n=f.dataset.n;i.src='assets/visuals/'+n+'.png';i.alt=f.dataset.t;document.getElementById('lbt').textContent=f.dataset.t;document.getElementById('lbp').href='assets/visuals/'+n+'.png';document.getElementById('lbs').href='assets/visuals/'+n+'.svg';lb.classList.add('on');document.body.style.overflow='hidden';}
+function close(){lb.classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('.vis').forEach(function(f){f.addEventListener('click',function(){open(f)});f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(f)}});});
+document.getElementById('lbx').addEventListener('click',close);lb.addEventListener('click',function(e){if(e.target===lb)close()});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+var els=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)});}else{els.forEach(function(e){e.classList.add('in')})}
+})();
+</script>
+</body></html>

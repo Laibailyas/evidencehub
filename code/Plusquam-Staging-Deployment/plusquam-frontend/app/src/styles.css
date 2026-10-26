@@ -1,0 +1,493 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary-50: rgb(var(--c-primary-50));
+  --color-primary-100: rgb(var(--c-primary-100));
+  --color-primary-200: rgb(var(--c-primary-200));
+  --color-primary: rgb(var(--c-primary));
+  --color-primary-hover: rgb(var(--c-primary-hover));
+  --color-primary-pressed: #262db0;
+  --color-primary-text: rgb(var(--c-primary-text));
+
+  --color-surface: rgb(var(--c-surface));
+  --color-surface-subtle: rgb(var(--c-surface-subtle));
+  --color-surface-card: rgb(var(--c-surface-card));
+  --color-surface-hover: rgb(var(--c-surface-hover));
+
+  --color-ink: rgb(var(--c-ink));
+  --color-ink-soft: rgb(var(--c-ink-soft));
+  --color-ink-muted: rgb(var(--c-ink-muted));
+  --color-ink-subtle: rgb(var(--c-ink-subtle));
+
+  --color-ok-bg: rgb(var(--c-ok-bg));
+  --color-ok-text: rgb(var(--c-ok-text));
+  --color-ok-dot: rgb(var(--c-ok-dot));
+
+  --color-warn-bg: rgb(var(--c-warn-bg));
+  --color-warn-text: rgb(var(--c-warn-text));
+  --color-warn-dot: rgb(var(--c-warn-dot));
+
+  --color-bad-bg: rgb(var(--c-bad-bg));
+  --color-bad-text: rgb(var(--c-bad-text));
+  --color-bad-dot: rgb(var(--c-bad-dot));
+
+  --color-info-bg: rgb(var(--c-info-bg));
+  --color-info-text: rgb(var(--c-info-text));
+  --color-info-dot: rgb(var(--c-info-dot));
+
+  --font-sans:
+    Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, system-ui, sans-serif;
+
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 0 0 1px rgb(var(--c-ring) / 0.07);
+  --shadow-card-hover:
+    0 1px 3px rgb(var(--c-ring) / 0.1), 0 0 0 1px rgb(var(--c-ring) / 0.1);
+  --shadow-glow:
+    0 8px 30px -8px rgb(var(--c-primary) / 0.35),
+    0 0 0 1px rgb(var(--c-ring) / 0.06);
+  --shadow-glow-lg:
+    0 20px 60px -15px rgb(var(--c-primary) / 0.4),
+    0 0 0 1px rgb(var(--c-ring) / 0.06);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-scale-in: scale-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+  --animate-glow-pulse: glow-pulse 2.4s ease-in-out infinite;
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-underline-in: underline-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  @keyframes underline-in {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility card-lift {
+  /* Card that lifts + glows on hover — the base tactile unit of the app */
+  @apply transition-all duration-300 ease-premium;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 16px 40px -18px rgb(var(--c-primary) / 0.28),
+      0 0 0 1px rgb(var(--c-ring) / 0.07);
+  }
+}
+
+@utility glass-header {
+  /* Header glass, used once scrolled */
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background: rgb(var(--c-surface) / 0.72);
+}
+
+@utility shimmer-bg {
+  /* Shimmer skeleton loading strip */
+  background-image: linear-gradient(
+    100deg,
+    rgb(var(--c-surface-hover)) 30%,
+    rgb(var(--c-surface-card)) 45%,
+    rgb(var(--c-surface-hover)) 60%
+  );
+  background-size: 200% 100%;
+  @apply animate-shimmer;
+}
+
+@utility text-signature {
+  /* Signature gradient text — reserved for the score / hero numbers only */
+  background-image: linear-gradient(
+    120deg,
+    rgb(var(--c-signature-a)),
+    rgb(var(--c-signature-b))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility link-underline {
+  /* Animated underline for active nav / tab links */
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    border-radius: 9999px;
+    background: rgb(var(--c-primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &[data-active='true']::after {
+    transform: scaleX(1);
+  }
+}
+
+@utility stagger-item {
+  /* Stagger helper: apply with inline --i custom property for index */
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@utility bg-mesh {
+  /* Soft, low-opacity brand mesh — for hero/dashboard backdrops */
+  background-image:
+    radial-gradient(
+      38% 45% at 8% 0%,
+      rgb(var(--c-primary) / 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      30% 35% at 95% 8%,
+      rgb(var(--c-signature-b) / 0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      40% 40% at 85% 95%,
+      rgb(var(--c-signature-a) / 0.07),
+      transparent 60%
+    );
+}
+
+@utility glass-card {
+  /* Glass surface for cards that should feel elevated & premium */
+  @apply bg-surface/70 backdrop-blur-xl ring-1 ring-ink/6;
+  box-shadow:
+    0 1px 2px rgb(var(--c-ring) / 0.04),
+    0 20px 50px -24px rgb(var(--c-ring) / 0.18);
+}
+
+@utility gradient-border {
+  /* 1px gradient-border card (wrap content in a child div with bg-surface) */
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--c-primary) / 0.5),
+    rgb(var(--c-signature-b) / 0.35)
+  );
+  padding: 1px;
+  & > * {
+    border-radius: calc(1rem - 1px);
+  }
+}
+
+@utility btn-gradient {
+  /* Premium gradient CTA — for the single "hero" action per screen */
+  @apply relative text-white font-semibold rounded-pill transition-all duration-300 ease-premium overflow-hidden isolate;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--c-primary)),
+    rgb(var(--c-signature-a))
+  );
+  box-shadow: 0 10px 30px -10px rgb(var(--c-primary) / 0.55);
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.35) 50%,
+      transparent 70%
+    );
+    background-size: 220% 100%;
+    background-position: 130% 0;
+    transition: background-position 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  &:hover::before {
+    background-position: -30% 0;
+  }
+  &:hover {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 18px 46px -10px rgb(var(--c-primary) / 0.65);
+    filter: brightness(1.06);
+  }
+  &:active {
+    transform: translateY(0) scale(0.99);
+  }
+}
+
+@utility btn-ghost-premium {
+  /* Secondary / outline button — premium lift + border glow on hover */
+  @apply relative font-semibold rounded-pill border border-ink/10 text-ink-soft transition-all duration-300 ease-premium;
+  &:hover {
+    @apply text-ink border-primary/40 bg-primary/5;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -12px rgb(var(--c-primary) / 0.35);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@utility btn-icon-premium {
+  /* Icon-only circular buttons: subtle magnetic pop */
+  @apply transition-all duration-200 ease-premium;
+  &:hover {
+    transform: translateY(-1px) scale(1.08);
+    box-shadow: 0 6px 16px -6px rgb(var(--c-primary) / 0.3);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@utility heading-accent {
+  /* Elevated section heading with gradient accent bar */
+  position: relative;
+  padding-left: 14px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 3px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      180deg,
+      rgb(var(--c-primary)),
+      rgb(var(--c-signature-b))
+    );
+  }
+}
+
+@utility title-premium {
+  /* Page titles: fade+rise in, then a soft gradient sheen sweeps across once */
+  display: inline-block;
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  background-image: linear-gradient(
+    100deg,
+    rgb(var(--c-ink)) 40%,
+    rgb(var(--c-primary)) 50%,
+    rgb(var(--c-ink)) 60%
+  );
+  background-size: 260% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both,
+    title-sheen 1.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility title-underline {
+  /* Underline that draws itself under a title/eyebrow on mount */
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 3px;
+    width: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(
+      90deg,
+      rgb(var(--c-primary)),
+      rgb(var(--c-signature-b))
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline-in 0.7s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@layer utilities {
+  :root {
+    /* Light theme tokens (RGB triplets for Tailwind alpha support) */
+    --c-surface: 255 255 255;
+    --c-surface-subtle: 250 250 251;
+    --c-surface-card: 245 245 250;
+    --c-surface-hover: 241 242 248;
+    --c-ink: 15 23 42;
+    --c-ink-soft: 51 65 85;
+    --c-ink-muted: 100 116 139;
+    --c-ink-subtle: 148 163 184;
+
+    /* Brand (theme-aware so text + buttons stay readable in both modes) */
+    --c-primary: 60 69 232; /* #3C45E8 */
+    --c-primary-hover: 46 55 214; /* #2E37D6 */
+    --c-primary-text: 60 69 232; /* brand text */
+    --c-primary-50: 237 238 255; /* #EDEEFF */
+    --c-primary-100: 222 224 255; /* #DEE0FF */
+    --c-primary-200: 194 198 255; /* #C2C6FF */
+
+    /* Signature accent — kept strictly monochrome (tints of the brand blue only) */
+    --c-signature-a: 60 69 232; /* #3C45E8 (brand) */
+    --c-signature-b: 140 146 245; /* lighter tint of brand blue */
+
+    /* Hairline / shadow base */
+    --c-ring: 15 23 42;
+
+    /* Status palette */
+    --c-ok-bg: 220 252 231;
+    --c-ok-text: 22 101 52;
+    --c-ok-dot: 22 163 74;
+    --c-warn-bg: 254 243 199;
+    --c-warn-text: 146 64 14;
+    --c-warn-dot: 217 119 6;
+    --c-bad-bg: 254 226 226;
+    --c-bad-text: 153 27 27;
+    --c-bad-dot: 220 38 38;
+    --c-info-bg: 224 231 255;
+    --c-info-text: 55 48 163;
+    --c-info-dot: 99 102 241;
+  }
+
+  .dark {
+    /* Dark theme tokens */
+    --c-surface: 26 28 42;
+    --c-surface-subtle: 16 17 27;
+    --c-surface-card: 33 36 54;
+    --c-surface-hover: 44 47 70;
+    --c-ink: 237 238 245;
+    --c-ink-soft: 201 205 220;
+    --c-ink-muted: 155 163 184;
+    --c-ink-subtle: 120 128 150;
+
+    /* Brand lightened for contrast on dark surfaces */
+    --c-primary: 110 118 245; /* #6E76F5 */
+    --c-primary-hover: 130 138 248; /* #828AF8 */
+    --c-primary-text: 165 171 255; /* #A5ABFF — readable brand text */
+    --c-primary-50: 42 46 82; /* dark indigo tint */
+    --c-primary-100: 54 59 104;
+    --c-primary-200: 72 80 142;
+
+    --c-ring: 255 255 255;
+    --c-signature-a: 110 118 245; /* brand blue, lightened for dark bg */
+    --c-signature-b: 170 175 250; /* lighter tint, still blue */
+
+    /* Status: deep translucent-feel backgrounds with light text */
+    --c-ok-bg: 24 64 46;
+    --c-ok-text: 134 239 172;
+    --c-ok-dot: 74 222 128;
+    --c-warn-bg: 70 54 22;
+    --c-warn-text: 252 211 77;
+    --c-warn-dot: 251 191 36;
+    --c-bad-bg: 78 33 38;
+    --c-bad-text: 252 165 165;
+    --c-bad-dot: 248 113 113;
+    --c-info-bg: 44 50 96;
+    --c-info-text: 165 180 252;
+    --c-info-dot: 129 140 248;
+  }
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    @apply font-sans text-ink bg-surface-subtle antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Subtle scrollbar in app */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { @apply bg-ink-subtle/30 rounded-pill; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-ink-subtle/50; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  @keyframes title-sheen {
+    0%   { background-position: 100% 0; }
+    100% { background-position: -60% 0; }
+  }
+}

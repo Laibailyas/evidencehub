@@ -1,0 +1,385 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  plusquam — AWS Lambda + DynamoDB API for FZulG project assessment.
+  Deploy in eu-central-1 (Frankfurt) for EU data residency.
+
+Parameters:
+  Stage:
+    Type: String
+    Default: staging
+    AllowedValues: [staging]
+  LlmApiKeySecretName:
+    Type: String
+    Default: plusquam/model-provider-api-key-staging
+    Description: Legacy parameter name; secret stores the API key for the provider selected by LlmProvider.
+  ClaudeModel:
+    Type: String
+    Default: claude-sonnet-4-6
+    Description: (legacy) Anthropic model id, used only when LlmProvider=anthropic.
+  LlmProvider:
+    Type: String
+    Default: dashscope
+    AllowedValues: [groq, dashscope, gemini, anthropic]
+    Description: Which AI provider the assessment pipeline uses. "dashscope" (paid) matches the accuracy evaluation exactly; "groq" is free.
+  LlmModel:
+    Type: String
+    Default: qwen-plus
+    Description: Model id for the selected provider (e.g. qwen-plus for dashscope, qwen/qwen3.8-27b for groq, gemini-2.0-flash).
+  LlmTemperature:
+    Type: String
+    Default: "0.3"
+    Description: Sampling temperature. 0.3 matches the evaluation; use 0 for reproducible verdicts.
+  CorsAllowedOrigins:
+    Type: String
+    Default: ''
+    Description: Comma-separated exact browser origins allowed to call this API.
+  AlarmEmail:
+    Type: String
+    Default: ''
+    Description: Optional email address for CloudWatch security/availability alerts.
+
+Conditions:
+  HasAlarmEmail: !Not [!Equals [!Ref AlarmEmail, '']]
+
+Globals:
+  Function:
+    Runtime: python3.13
+    Architectures: [arm64]
+    Timeout: 120                  # assess handler can take ~60s
+    MemorySize: 1024
+    Environment:
+      Variables:
+        STAGE:                  !Ref Stage
+        PROJECTS_TABLE:         !Ref ProjectsTable
+        ASSESSMENTS_TABLE:      !Ref AssessmentsTable
+        USERS_TABLE:            !Ref UsersTable
+        RATE_LIMITS_TABLE:      !Ref RateLimitsTable
+        HANDOFFS_TABLE:         !Ref HandoffsTable
+        CORS_ALLOWED_ORIGINS:   !Ref CorsAllowedOrigins
+        LLM_SECRET_NAME: !Ref LlmApiKeySecretName
+        CLAUDE_MODEL:           !Ref ClaudeModel
+        LLM_PROVIDER:           !Ref LlmProvider
+        LLM_MODEL:              !Ref LlmModel
+        LLM_TEMPERATURE:        !Ref LlmTemperature
+        JWT_SECRET_ID:          !Ref JwtSecret
+    Tracing: Active
+
+Resources:
+
+  # ─── DynamoDB ────────────────────────────────────────────────
+  ProjectsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub plusquam-${Stage}-projects
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: pk, AttributeType: S }   # USER#<userId>
+        - { AttributeName: sk, AttributeType: S }   # PROJECT#<projectId>
+      KeySchema:
+        - { AttributeName: pk, KeyType: HASH }
+        - { AttributeName: sk, KeyType: RANGE }
+      PointInTimeRecoverySpecification: { PointInTimeRecoveryEnabled: true }
+      SSESpecification: { SSEEnabled: true }
+
+  AssessmentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub plusquam-${Stage}-assessments
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: pk, AttributeType: S }   # PROJECT#<projectId>
+        - { AttributeName: sk, AttributeType: S }   # STATUS | ASSESSMENT | STEP#<n>
+      KeySchema:
+        - { AttributeName: pk, KeyType: HASH }
+        - { AttributeName: sk, KeyType: RANGE }
+      PointInTimeRecoverySpecification: { PointInTimeRecoveryEnabled: true }
+      SSESpecification: { SSEEnabled: true }
+
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub plusquam-${Stage}-users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: pk, AttributeType: S }   # EMAIL#<email>
+      KeySchema:
+        - { AttributeName: pk, KeyType: HASH }
+      PointInTimeRecoverySpecification: { PointInTimeRecoveryEnabled: true }
+      SSESpecification: { SSEEnabled: true }
+
+  RateLimitsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub plusquam-${Stage}-rate-limits
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: pk, AttributeType: S }
+      KeySchema:
+        - { AttributeName: pk, KeyType: HASH }
+      TimeToLiveSpecification: { AttributeName: expiresAt, Enabled: true }
+      SSESpecification: { SSEEnabled: true }
+
+  HandoffsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub plusquam-${Stage}-login-handoffs
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: codeHash, AttributeType: S }
+      KeySchema:
+        - { AttributeName: codeHash, KeyType: HASH }
+      TimeToLiveSpecification: { AttributeName: expiresAt, Enabled: true }
+      SSESpecification: { SSEEnabled: true }
+
+  # JWT signing key — CloudFormation generates a random value automatically.
+  JwtSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub plusquam/jwt-secret-${Stage}
+      Description: HMAC signing key for plusquam JWTs
+      GenerateSecretString:
+        PasswordLength: 64
+        ExcludePunctuation: true
+
+  # CORS is handled in Lambda (CorsFunction + per-response headers), not here —
+  # AWS::Serverless::HttpApi CorsConfiguration doesn't reliably apply to explicit
+  # HttpApi resources with auto-generated routes.
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      # $default stage → stageless invoke URL (…amazonaws.com/projects, no /prod prefix),
+      # which matches the ApiUrl output and the frontend's VITE_API_BASE.
+      StageName: "$default"
+      AccessLogSettings:
+        DestinationArn: !GetAtt ApiAccessLogGroup.Arn
+        Format: '{"requestId":"$context.requestId","sourceIp":"$context.identity.sourceIp","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","routeKey":"$context.routeKey","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength"}'
+      DefaultRouteSettings:
+        ThrottlingRateLimit: 100
+        ThrottlingBurstLimit: 200
+      RouteSettings:
+        'POST /auth/login':
+          ThrottlingRateLimit: 5
+          ThrottlingBurstLimit: 10
+        'POST /projects/{id}/assess':
+          ThrottlingRateLimit: 1
+          ThrottlingBurstLimit: 3
+
+  # ─── Lambda functions ───────────────────────────────────────
+  CorsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: handlers.cors.lambda_handler
+      Events:
+        Preflight:
+          Type: HttpApi
+          Properties: { ApiId: !Ref HttpApi, Method: OPTIONS, Path: '/{proxy+}' }
+
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: handlers.auth.lambda_handler
+      Policies:
+        - DynamoDBReadPolicy: { TableName: !Ref UsersTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref RateLimitsTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref HandoffsTable }
+        - Statement:
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Ref JwtSecret
+      Events:
+        Login:
+          Type: HttpApi
+          Properties: { ApiId: !Ref HttpApi, Method: POST, Path: /auth/login }
+        Me:
+          Type: HttpApi
+          Properties: { ApiId: !Ref HttpApi, Method: GET, Path: /auth/me }
+        Exchange:
+          Type: HttpApi
+          Properties: { ApiId: !Ref HttpApi, Method: POST, Path: /auth/exchange }
+
+  ProjectsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: handlers.projects.lambda_handler
+      Policies:
+        - DynamoDBCrudPolicy: { TableName: !Ref ProjectsTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref AssessmentsTable }
+        - DynamoDBReadPolicy: { TableName: !Ref UsersTable }
+        - Statement:
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Ref JwtSecret
+      Events:
+        List:    { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,  Path: /projects } }
+        Create:  { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: POST, Path: /projects } }
+        Get:     { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,  Path: '/projects/{id}' } }
+        Patch:   { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: PATCH, Path: '/projects/{id}' } }
+        Delete:  { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: DELETE, Path: '/projects/{id}' } }
+        StarsGet: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET, Path: /me/stars } }
+        StarsPut: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: PUT, Path: /me/stars } }
+        NotifGet:  { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,  Path: /me/notifications } }
+        NotifRead: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: POST, Path: /me/notifications/read } }
+
+  AdminFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: handlers.admin.lambda_handler
+      Policies:
+        - DynamoDBCrudPolicy: { TableName: !Ref UsersTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref ProjectsTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref AssessmentsTable }
+        - Statement:
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Ref JwtSecret
+      Events:
+        UsersList:   { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,    Path: /admin/users } }
+        UsersCreate: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: POST,   Path: /admin/users } }
+        UsersDelete: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: DELETE, Path: '/admin/users/{email}' } }
+        UsersPwd:    { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: POST,   Path: '/admin/users/{email}/password' } }
+        ProjectsAll: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,    Path: /admin/projects } }
+        ProjectPatch: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: PATCH,  Path: '/admin/projects/{id}' } }
+        ProjectDelete: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: DELETE, Path: '/admin/projects/{id}' } }
+        PromptsGet:  { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,    Path: /admin/prompts } }
+        PromptsPut:  { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: PUT,    Path: /admin/prompts } }
+
+  AssessFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: handlers.assess.lambda_handler
+      FunctionName: !Sub plusquam-${Stage}-assess
+      Timeout: 600                       # async worker runs ~5–6 sequential model calls
+      EventInvokeConfig:
+        MaximumRetryAttempts: 0          # don't retry the long pipeline on failure
+      Policies:
+        - DynamoDBCrudPolicy: { TableName: !Ref ProjectsTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref AssessmentsTable }
+        - DynamoDBReadPolicy: { TableName: !Ref UsersTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref RateLimitsTable }
+        - Statement:
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Sub arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:${LlmApiKeySecretName}-*
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Ref JwtSecret
+            - Effect: Allow             # self-invoke for the async pipeline worker
+              Action: lambda:InvokeFunction
+              Resource: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:plusquam-${Stage}-assess
+      Events:
+        Start:  { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: POST, Path: '/projects/{id}/assess' } }
+        Status: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,  Path: '/projects/{id}/status' } }
+        Get:    { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,  Path: '/projects/{id}/assessment' } }
+        Report: { Type: HttpApi, Properties: { ApiId: !Ref HttpApi, Method: GET,  Path: '/projects/{id}/report.pdf' } }
+
+  # Retain diagnostic logs for 30 days and notify through SNS when configured.
+  ApiAccessLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/apigateway/plusquam-${Stage}-access
+      RetentionInDays: 30
+
+  AlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: !Sub plusquam-${Stage}-security-alerts
+
+  AlertEmailSubscription:
+    Type: AWS::SNS::Subscription
+    Condition: HasAlarmEmail
+    Properties:
+      Protocol: email
+      TopicArn: !Ref AlertTopic
+      Endpoint: !Ref AlarmEmail
+
+  AssessmentErrorsAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub plusquam-${Stage}-assessment-errors
+      AlarmDescription: Assessment Lambda reported one or more failed invocations.
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions: [{ Name: FunctionName, Value: !Ref AssessFunction }]
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlertTopic]
+
+  AssessmentDurationAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub plusquam-${Stage}-assessment-duration
+      AlarmDescription: Assessment Lambda is approaching its 10-minute timeout.
+      Namespace: AWS/Lambda
+      MetricName: Duration
+      Dimensions: [{ Name: FunctionName, Value: !Ref AssessFunction }]
+      Statistic: Maximum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 540000
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlertTopic]
+
+  ApiServerErrorsAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub plusquam-${Stage}-api-5xx
+      AlarmDescription: HTTP API returned repeated server errors.
+      Namespace: AWS/ApiGateway
+      MetricName: 5xx
+      Dimensions:
+        - { Name: ApiId, Value: !Ref HttpApi }
+        - { Name: Stage, Value: '$default' }
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlertTopic]
+
+  LoginRateLimitMetric:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref ApiAccessLogGroup
+      FilterPattern: '{ $.routeKey = "POST /auth/login" && $.status = "429" }'
+      MetricTransformations:
+        - MetricName: LoginRateLimitEvents
+          MetricNamespace: !Sub Plusquam/${Stage}/Security
+          MetricValue: '1'
+
+  LoginRateLimitAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub plusquam-${Stage}-login-rate-limit
+      AlarmDescription: Repeated login rate limiting may indicate a password-spray attempt.
+      Namespace: !Sub Plusquam/${Stage}/Security
+      MetricName: LoginRateLimitEvents
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 10
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlertTopic]
+
+Outputs:
+  ApiUrl:
+    Description: HTTP API endpoint
+    Value: !Sub https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com
+  ProjectsTableName: { Value: !Ref ProjectsTable }
+  AssessmentsTableName: { Value: !Ref AssessmentsTable }
+  UsersTableName: { Value: !Ref UsersTable }
+  JwtSecretArn: { Value: !Ref JwtSecret }
+  RateLimitsTableName: { Value: !Ref RateLimitsTable }
+  HandoffsTableName: { Value: !Ref HandoffsTable }

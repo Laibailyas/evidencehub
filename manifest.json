@@ -1,0 +1,937 @@
+{
+  "package": "Plusquam Evidence Hub",
+  "environment": "staging only",
+  "updated": "2026-10-26",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 29,
+      "sha256": "5914dbf939b169fe30104bd269deadc5ff777590083822775aeac42b5ac2edc0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1898,
+      "sha256": "cf6ed348f77fc4c22461dbefc21861a6a235e062dc1417ee3b72bcdf7aa3e956"
+    },
+    {
+      "path": "assets/Numans-Regular.ttf",
+      "bytes": 36756,
+      "sha256": "505d8319d8649ea38af146e0971a6c81e8254502f4fde14e8361fc37b9fe3b8f"
+    },
+    {
+      "path": "assets/favicon.png",
+      "bytes": 183420,
+      "sha256": "ef8ad01f4ee62cf4359eb0000488fa57677cd80ea392e5883072a95b728dc4ca"
+    },
+    {
+      "path": "assets/gradient.jpg",
+      "bytes": 140410,
+      "sha256": "cdc7327d9cf201aad2b465ab51de7fae5501d89bd6d0ca939ec9b6cae4273ba8"
+    },
+    {
+      "path": "assets/logo.png",
+      "bytes": 210221,
+      "sha256": "a690db0bf08a514b97dff25de0c1dcb5057c60729ece0cb2fa1f9468af922b38"
+    },
+    {
+      "path": "assets/visuals/01_System_Architecture.png",
+      "bytes": 383385,
+      "sha256": "d24771320ec3f3ea3dd1729810ffb2289de13b652c238b6c30f628ed29935300"
+    },
+    {
+      "path": "assets/visuals/01_System_Architecture.svg",
+      "bytes": 348584,
+      "sha256": "dd841475cba65d9591339bf5ee9d8eaa76ccef005490179a5d220508583166f6"
+    },
+    {
+      "path": "assets/visuals/01_System_Architecture_thumb.jpg",
+      "bytes": 105435,
+      "sha256": "7a4a12fe1f814bb6c9733beb714124c3ef1347290c09d4db59b7a4e5f9086ba6"
+    },
+    {
+      "path": "assets/visuals/02_Data_and_Request_Flow.png",
+      "bytes": 346670,
+      "sha256": "9c2f2fbbc63ae9a277cbe6fef88d213b90135d43d0ab7d7bb62d1232e2515b93"
+    },
+    {
+      "path": "assets/visuals/02_Data_and_Request_Flow.svg",
+      "bytes": 348041,
+      "sha256": "8dd94433eced53280ca4eebdcd04d6fcec7cfd2959e78d1a83e9be961fba3516"
+    },
+    {
+      "path": "assets/visuals/02_Data_and_Request_Flow_thumb.jpg",
+      "bytes": 106230,
+      "sha256": "530070e4e7db09930d693f00e373b162aa46a20f83d5ccc48510fbd403847116"
+    },
+    {
+      "path": "assets/visuals/03_Security_Posture.png",
+      "bytes": 375116,
+      "sha256": "63dd1bf264a29069abdbb2bece1981b316ada91514293023aedfe0b750ef04ac"
+    },
+    {
+      "path": "assets/visuals/03_Security_Posture.svg",
+      "bytes": 347817,
+      "sha256": "def2dea0bcf97784f0ba76044320743dd733448f067758c775b6f34ebb2c1234"
+    },
+    {
+      "path": "assets/visuals/03_Security_Posture_thumb.jpg",
+      "bytes": 111924,
+      "sha256": "f5e84b6745a3f87abe34d083f8f3d06e4d46e8c230271b22dc06f266d7dd8081"
+    },
+    {
+      "path": "assets/visuals/04_UAT_Results.png",
+      "bytes": 286767,
+      "sha256": "51e20803101a685126e6c9679ce88c5047989da127f21405ea689a72735b0bfa"
+    },
+    {
+      "path": "assets/visuals/04_UAT_Results.svg",
+      "bytes": 347307,
+      "sha256": "e90b0b8777da657a9b10782f355f6d69ffe4fa1ba1b2b7115b99f05dd6f26f99"
+    },
+    {
+      "path": "assets/visuals/04_UAT_Results_thumb.jpg",
+      "bytes": 99045,
+      "sha256": "ca679350cadfac97961d2878c67b4899289a475c309c664f12b0142b7e680bab"
+    },
+    {
+      "path": "assets/visuals/05_Roadmap_and_Timeline.png",
+      "bytes": 312322,
+      "sha256": "5701ce6a71c0dc4b9b235cb7d4bdaa3e2f2a6ef1540423eec979f4af4feb0ec6"
+    },
+    {
+      "path": "assets/visuals/05_Roadmap_and_Timeline.svg",
+      "bytes": 344696,
+      "sha256": "85ea01ed7d0cb56c86b35b56ba7fd0faa5f89401dbfbe869cac973d2e84dfed4"
+    },
+    {
+      "path": "assets/visuals/05_Roadmap_and_Timeline_thumb.jpg",
+      "bytes": 97237,
+      "sha256": "a41f117b68b6a1a7d74faf21a48b8aaa00f7e83e70555b64f88a484a52650123"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/README.md",
+      "bytes": 587,
+      "sha256": "132c4aa329c5528b74ac53e357e4b541df381c4a7ac8def22230c6a8285bb826"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/admin.py",
+      "bytes": 10783,
+      "sha256": "dca8665893d27a0a23b4b1af4e7b2246c23270f429b955a8b3415e7d9beeaae0"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/assess.py",
+      "bytes": 17680,
+      "sha256": "e8bcae0e5c25c585baf2de1b8a27317d51ab65ccb5670a0d3e939ed5764f5763"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/auth.py",
+      "bytes": 4203,
+      "sha256": "c55fb1dc1e9d0987d8f6f1190369a402ebb80ff2c34753d6f370df94e6cb2020"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/cors.py",
+      "bytes": 271,
+      "sha256": "abdc8e5eb14961e7a4a8c4297e7f514a580e436109ca246a747205e2634ce108"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/projects.py",
+      "bytes": 9887,
+      "sha256": "a22d4136d93b9b4cf5fde196ed237ff79519d6cef312d68847148b33e45e07ed"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/public_not_found.py",
+      "bytes": 387,
+      "sha256": "dec2288e7143b0b2c169662e7f136fc47b816093b71c2a5cc798416f6de2d9ca"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/auth.py",
+      "bytes": 5080,
+      "sha256": "7d90619f066ff02febe035a50a796a7c461e8c2fcf2cf3f6417793943f1d3c02"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/claude.py",
+      "bytes": 8454,
+      "sha256": "885a5af1e66e42bff16654377f776b1b3407bdb726334c1f877e88e94416a7eb"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/ddb.py",
+      "bytes": 13737,
+      "sha256": "fc3bb90a482cdc849d1dff9497e0abf47563b21c1afb943821331265c2ba7972"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/extract.py",
+      "bytes": 3658,
+      "sha256": "6fdc7a8a35640d609799ec6b720247917196a5311d5de7b0736219d6176872db"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/http.py",
+      "bytes": 3683,
+      "sha256": "00c9aa7868d55634d6f589216b94043d861f6c6bf14f184fbc69f2aacbdc40fb"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/openalex.py",
+      "bytes": 3851,
+      "sha256": "8fe99276e727bb084548e1aef4bd6b8ff50b0d8bda1a11efaad86f6eb5cd46d6"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/pdf_report.py",
+      "bytes": 16341,
+      "sha256": "3193295ae6fd5356759e03898c3a6fd91bac6887ad4c55f040d715a5a53a7d94"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/prompt_defaults.py",
+      "bytes": 9457,
+      "sha256": "d5674851d58377df21022728aa1f55f6fb44ce1514a4c3f04bf2dbf3e1aceb90"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/prompts.py",
+      "bytes": 1359,
+      "sha256": "16cbadb775bf27edbdc4cf16ec180cbfc34f751a103a70b70806855bb777455d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/validation.py",
+      "bytes": 7195,
+      "sha256": "02375cbb1cff1754bcc2f68b80856b5ee0f50f3940517e9bf357f611cbc8e97a"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/requirements.txt",
+      "bytes": 84,
+      "sha256": "18857220a8084d579df2763672bc8ce732c954f3eab5446e7fcca635b69d38aa"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/template.yaml",
+      "bytes": 16107,
+      "sha256": "d7003edf0376442440583c95aefdfc5a0e152beb0f979e8a255dcc5fc190d972"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/zap-security.template.json",
+      "bytes": 3979,
+      "sha256": "65f4520fded0ab4be36ed836d4fcd765df191ff1af9df8e2a6ca11f4013d7798"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/_common.sh",
+      "bytes": 3511,
+      "sha256": "6ceb3a12960817fc8a5818031bf5bcc1422818902cc52d95142f39b50101a36d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy-all.sh",
+      "bytes": 6318,
+      "sha256": "b89c3756ba0588205f650e87525dcad3a8d5bd593aed37aeeb01a78a1156ea5a"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy-backend.sh",
+      "bytes": 5704,
+      "sha256": "f8527b54b97b81bad313ee802335320339c33f052bc9a5e32af950322bb2ef1b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy.sh",
+      "bytes": 7582,
+      "sha256": "22a6b2a6be278c7ab7edb219e07963169dc1216f94f8cd42ca90acbbfe266775"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/seed-admin.sh",
+      "bytes": 2499,
+      "sha256": "e192317aa6a93f5f07887cdfe97ef4995bb91ad52f66abdf87ec2cc46dbb285c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/setup-cloudfront.sh",
+      "bytes": 13442,
+      "sha256": "e2ab9c81cbc9cea4d20257754e1f9d7d57399e8ccc2113801724647dea712dca"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/.gitignore",
+      "bytes": 57,
+      "sha256": "acfcae19de1ecfa205157420ca3b6fd2caf578ba98b53968b0ba853b07379228"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/index.html",
+      "bytes": 449,
+      "sha256": "7ab624a2199027c18145c87d42795b9699b44e920698be0abc1e872db7ea0317"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/package-lock.json",
+      "bytes": 53650,
+      "sha256": "fef206fb7e27087e9a98cdb6d6de1d3537b9c0ac6252275dcc79c862d66efa65"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/package.json",
+      "bytes": 680,
+      "sha256": "ad27a1507575012d49f5a702fbd2490eb8cc0e697647f964989153cb77022f1c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/postcss.config.js",
+      "bytes": 70,
+      "sha256": "4cae941be9bc3bee9a6905e47ea7a51aee216d587d34a8cc4ae48f78fd6d8159"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/public/favicon.svg",
+      "bytes": 743,
+      "sha256": "2fe435c1b1e5d44213a1507ac21805e06f27f62db8a88f648cc6b287fd293ad9"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/public/licenses/manrope-OFL.txt",
+      "bytes": 4383,
+      "sha256": "d826ab6583b12c26807d8716a545bdbbb672df04f48608a364ba9efdbe501c30"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/public/plusquam-ink.png",
+      "bytes": 87220,
+      "sha256": "2498975204c9db73309bf3a61e52310d2befdee84a9e2d35707ca0b6de2cff35"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/public/plusquam-light.png",
+      "bytes": 79317,
+      "sha256": "833e54fe9e8a0d3dce821a432d60210b1ee96ec340304c496869448558695343"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/public/plusquam-mark.png",
+      "bytes": 2203,
+      "sha256": "f7a539797f5eb9265fd33141b5fb474dddd9b618a11bc84724e43392da92e198"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/public/theme.js",
+      "bytes": 296,
+      "sha256": "7f8f535f7876eb61eb1401d965faad39cac8197cf944a4b5966c2883e25d4860"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/App.tsx",
+      "bytes": 1186,
+      "sha256": "ad4a582ffac3b9bf4205fa38b0745c0a437732666246d644402209b75c8e4fcd"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/ErrorBoundary.tsx",
+      "bytes": 1595,
+      "sha256": "c06b422a64c6c6bc2ad4995caa6e255459b8ebfc6aa8c0fe0d5f940740fe570f"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/Header.tsx",
+      "bytes": 7937,
+      "sha256": "eb752fafb02b3678c54f6c8b38b1a73d9ed478a2c9f1246d252206e5063bc638"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/Layout.tsx",
+      "bytes": 688,
+      "sha256": "e250ef298f29456d8a8b3fba72b01f159a0fbcecc75563470ce5658439510e01"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/Logo.tsx",
+      "bytes": 751,
+      "sha256": "bff032a77ec71e24e173b2c4ea64d2f98a1ba2b961e26ce73a382e2a6b514676"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/Sidebar.tsx",
+      "bytes": 6063,
+      "sha256": "3d2ea0a855870fa3d6a6f262fa89817e66911ff71c6182041fa94a6fd9016a5f"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/StatCard.tsx",
+      "bytes": 2776,
+      "sha256": "4f85f78768db93eb1bc9bb616b29ce1d7b38b22b3bbd995d3aff89d7cf3b4062"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/StatusMenu.tsx",
+      "bytes": 3005,
+      "sha256": "1d49a337f9c90215f2e347f5cd4d393489cf7458fb917f30a39a3063f23f49a6"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/report/atoms.tsx",
+      "bytes": 4171,
+      "sha256": "976f09612f2d0c0a94fc6fc5c8061b18fe87743fa5254d0ba7476018fb7ef555"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/components/report/sections.tsx",
+      "bytes": 18118,
+      "sha256": "c695e353ba98d839231e22db1c86fc774404f90a5b7c976bf692ae94d4089396"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/data/mockAssessment.ts",
+      "bytes": 21533,
+      "sha256": "6ee8cbee268bcbb6c9e3fea0093f9c2597331626c6bf9e849409f30dfc20a007"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/data/mockProjects.ts",
+      "bytes": 3465,
+      "sha256": "cd116f525fd997260526ee147affccd67001da82ba9ddfc5438ed198e6f9e799"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/i18n/translations.ts",
+      "bytes": 31083,
+      "sha256": "92726235d42a1563768fc4980d9b943c98eb54e61cabb9572fb3f3b40e8e7abe"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/i18n/useTranslation.tsx",
+      "bytes": 1501,
+      "sha256": "9d351e6397a5149dcae9d4561c531a1a4567b53904f5e225b2c1130ddd835bad"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/lib/api.ts",
+      "bytes": 8155,
+      "sha256": "f1aee5adc09e082d2163d5796dee3d7f39cf24ef1f0bec4ea8201066153ebc2a"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/lib/apiErrors.ts",
+      "bytes": 1953,
+      "sha256": "e98074715257b9e8e615b82f9de3d1d133086fae4c0c548f62a16fa2126d197c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/lib/session.ts",
+      "bytes": 1979,
+      "sha256": "f8d8b7c6a8c79090ec6c95baac8f7a5f40017b8f91c193916473930f42efe6ff"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/lib/starred.ts",
+      "bytes": 3457,
+      "sha256": "c13df403a51d14b904731374baa12dbb6df351bd99519f7e6c207e9ca836ee53"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/lib/status.ts",
+      "bytes": 2063,
+      "sha256": "2ceb3b36920218ac3a2dd420c09016d2dff111faf75c7e67daafa59110f741d4"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/lib/useTheme.ts",
+      "bytes": 718,
+      "sha256": "a635aa7ae734ba93a20204360cd7eac849bd83f5009bd9c5ee79740ce1b5e018"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/main.tsx",
+      "bytes": 1991,
+      "sha256": "5cb78a87d38a50fc5188d01bd7f6215726105f9b439432b6f382903ebe25ebcf"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/routes/Admin.tsx",
+      "bytes": 15385,
+      "sha256": "ee4c8e3fdd5e152873867b881473ed7cf4f54570b65c565e955a321ae95eb7dc"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/routes/Dashboard.tsx",
+      "bytes": 24100,
+      "sha256": "448e359cac524b1d56733c5e0a4b7a1d704f430d4eeba7dc686231d233698df5"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/routes/Library.tsx",
+      "bytes": 5479,
+      "sha256": "a0e28cbeba07234500f8ce5136b6ac9ae4d003e6422d9cf9a23637f99d08ee17"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/routes/NewProject.tsx",
+      "bytes": 14190,
+      "sha256": "579e5ea2624b0ef0caae315774caf2a73716882a0c9727a272efd12056f4931b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/routes/Processing.tsx",
+      "bytes": 9593,
+      "sha256": "9c848f9fbb0b1950e0a37116815cadf213b51efee59e9ba90d69cc3b96dfa012"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/routes/Report.tsx",
+      "bytes": 22212,
+      "sha256": "2bfcbd3a0881d072b863a78b883103f299e118f31019e11fdadf1df78b732c6d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/styles.css",
+      "bytes": 13196,
+      "sha256": "c69d7e1aaa63c779c7f87178748a10f866d10589a5ca29ff6c0ebe720f2ce675"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/src/vite-env.d.ts",
+      "bytes": 379,
+      "sha256": "1071a1d0fcab52cbe4eafb0dd4643f05a84887f34ccf08c912762cc06ca3150c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/tests/sidebar-history.test.cjs",
+      "bytes": 4548,
+      "sha256": "5a794816a45590ef9b005ba60c30bccb3fbfa39915e35f74344c5ea78d30b970"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/tests/upload-errors.test.cjs",
+      "bytes": 3579,
+      "sha256": "2315b0c20d3cd65cd07c5d8c4955202eaacb61f14ffe82806a2f002cbd8f8285"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/tsconfig.json",
+      "bytes": 661,
+      "sha256": "77278ae73c6ebed2501ddc68c4b0e756267804fe5794388aad762ef151b12f10"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/tsconfig.node.json",
+      "bytes": 256,
+      "sha256": "af364d0250f3f048fb2a0aec9029c0b6353f6076c3bb2538d84e0b90b92ea4d2"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/tsconfig.node.tsbuildinfo",
+      "bytes": 44650,
+      "sha256": "2b3115c3e473768b341307c5cea72d311c911c3a76765be963d95a48fc32d922"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/tsconfig.tsbuildinfo",
+      "bytes": 804,
+      "sha256": "1a583722e74e7d6f93130a3d72b99181a9bc5dfbd921abe4d229ed4b72e0c3a0"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/vite.config.d.ts",
+      "bytes": 76,
+      "sha256": "4b96dd19fd2949d28ce80e913412b0026dc421e5bf6c31d87c7b5eb11b5753b4"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/vite.config.js",
+      "bytes": 504,
+      "sha256": "f1c20af15636f8a07090d7c24d79188ba86f820ee32a8a99b49c85c49ce230d1"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/vite.config.ts",
+      "bytes": 477,
+      "sha256": "f26201a546ad05c3b84b533ad5df5fea570b61836e4df1f205ac7dc6e85a81e1"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/css/base.css",
+      "bytes": 2919,
+      "sha256": "018e02f63e5934dde30118cfe81be77a77266c8632264ce34d47b0a0097171e2"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/css/landing.css",
+      "bytes": 5156,
+      "sha256": "c1818e14b032db613fc84a361a144fd14bbf240d335f76275b9aee4d072a203b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/css/signin.css",
+      "bytes": 8957,
+      "sha256": "62f17fccf75a70a70029011750f91098086d72e70c7a2ea2c8f5605b30cd4660"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/OFL.txt",
+      "bytes": 4383,
+      "sha256": "d826ab6583b12c26807d8716a545bdbbb672df04f48608a364ba9efdbe501c30"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-400-normal.woff",
+      "bytes": 10032,
+      "sha256": "377eaffaf00d2fe381870f08f098e3ad266618253c9d4197647b89816784e49c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-400-normal.woff2",
+      "bytes": 7840,
+      "sha256": "5a987d1484070f1ea54de7c10ebfa4057a18e379361dbe5fd5c4fa4c2d95ef39"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-500-normal.woff",
+      "bytes": 10012,
+      "sha256": "5e86bae45417edeebd782a31adccfaa811e938fe93099cbe4b7991e7d74e0847"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-500-normal.woff2",
+      "bytes": 7872,
+      "sha256": "ab67a6d3a3fc134b74e966f10de67b1ae07c1c29fd7ebb6cb0705488f1128e22"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-600-normal.woff",
+      "bytes": 10060,
+      "sha256": "716a12f36cf789e399e0ad0bd205e3d1c66e4de66fe0c7e94a59ab7f007fce89"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-600-normal.woff2",
+      "bytes": 7872,
+      "sha256": "80b86efbef1c9fb66557cc4cc7b6db42db2fd631f1a9b8735f3bbefbb5128799"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-700-normal.woff",
+      "bytes": 10004,
+      "sha256": "64d81d2579261c073c8e7ed0964f7b1735707ac3afc6c60a49531918e1cb128f"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-700-normal.woff2",
+      "bytes": 7852,
+      "sha256": "2ad647b9159d27d27f4999b30598f92e60449fb20d80803bc7b85afafbb446d5"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-800-normal.woff",
+      "bytes": 9784,
+      "sha256": "fad28539e6148e092554064a0eaa3c72d71355e0fcaeddcf6a3407233d6620b3"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-800-normal.woff2",
+      "bytes": 7588,
+      "sha256": "e76a69e66b624abdb84cdda1e96b04417afbfb1f3cb684488a867b29bcb3870c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-400-normal.woff",
+      "bytes": 2200,
+      "sha256": "2ba8c74e257f85e4462880a1bf39ca3db270b11923d14a674080ef8f6289a7da"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-400-normal.woff2",
+      "bytes": 1624,
+      "sha256": "2888616ddce6d7a011b083bc27527df3313f1df71dc54fd752a83f347f4e8e29"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-500-normal.woff",
+      "bytes": 2184,
+      "sha256": "9a428f1c2013cc26132f6b6de109721626683c0fe67178961de1877b5bb439cc"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-500-normal.woff2",
+      "bytes": 1604,
+      "sha256": "982fbeabb101d46163cb1db8898559cca01871076f9518601ffc86d06a896801"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-600-normal.woff",
+      "bytes": 2192,
+      "sha256": "af1f6f3fa552cf928315a8c18c09806f1d7d3c143ad16ccf2c0597064456f69b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-600-normal.woff2",
+      "bytes": 1612,
+      "sha256": "a9d78164da8b9d756bc97d7c45ced1dcb10c4ff894a249d2a759406ec54c2532"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-700-normal.woff",
+      "bytes": 2176,
+      "sha256": "eed028eaa08fc76f336ca9e4c0a629f6f538d23530c49bf4411703df7d3fe723"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-700-normal.woff2",
+      "bytes": 1568,
+      "sha256": "0dc9d9b75bffd07e25f727e8d67a39cc731e21c718b3b86267226bb4e2757813"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-800-normal.woff",
+      "bytes": 2184,
+      "sha256": "a17c7704a68d1f0de4028789750c77b80658b9d03c8a0d86b7bec9bddd68e5ce"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-cyrillic-ext-800-normal.woff2",
+      "bytes": 1592,
+      "sha256": "e7e345acbc4e836a3e60f6300a630bfd54461713befbc10375f9ef4120e023cd"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-400-normal.woff",
+      "bytes": 6772,
+      "sha256": "b1ef144fe025cbadcfb7880bc611535586d7f45461e7add7305ea2ea9ccad6ed"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-400-normal.woff2",
+      "bytes": 5280,
+      "sha256": "47f1b5621859a25df69ec1f1c7ed0ca3aadc3eccd1770c6e89cd5af06f1a0bf8"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-500-normal.woff",
+      "bytes": 6764,
+      "sha256": "5bb4928d86ca19d24b2b2fd9f2cb5e8080acad32ef5d6b2f9bf1abc1d65afa38"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-500-normal.woff2",
+      "bytes": 5252,
+      "sha256": "68c1619731941dd395b6b2c1ac05d2588815758eabcd5785cf579b10e9a94d27"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-600-normal.woff",
+      "bytes": 6740,
+      "sha256": "59fa49c299110657ee3dbc02beed32f5fda899423686058a0ce7e499851e6e7a"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-600-normal.woff2",
+      "bytes": 5232,
+      "sha256": "18d69aa241a76095c4c5f8c224abe6519ff60db3b4085e843d59fb4965a4eebd"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-700-normal.woff",
+      "bytes": 6744,
+      "sha256": "caefb2ca9d80515325f901a72b5f3a88a6cb23b603a7aa2ed25e07133214aeb3"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-700-normal.woff2",
+      "bytes": 5236,
+      "sha256": "b37807fe106dc58c57642635ae7ea172abe65b380fea7b8894615a5883b26ec5"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-800-normal.woff",
+      "bytes": 6628,
+      "sha256": "04f7139c9f19fe1c1520de820733db3c2a65958db1f405a1f6cb336d10852487"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-greek-800-normal.woff2",
+      "bytes": 5184,
+      "sha256": "5db05b4f78d65931127f8a8d13cd1a6dfd69a17ec2122146cc324cb7fa3deadb"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-400-normal.woff",
+      "bytes": 18292,
+      "sha256": "1bf66c29a29f1b71d507cb97fc138cd130b856ed05b55decd3a2944b413cb636"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-400-normal.woff2",
+      "bytes": 14108,
+      "sha256": "849290ef12a2eeb9af5c11924120d11aa4ae8b435ed3347d7fc8bc240c293ca3"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-500-normal.woff",
+      "bytes": 18240,
+      "sha256": "c805ac8fd73fb95ddba74e624500c7d7d9a8ec6434d723bb6a9b76173c9e41b4"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-500-normal.woff2",
+      "bytes": 14044,
+      "sha256": "19874318747181a650eda439c37955220b849d9c4797c9e0718ee67d4bf929bc"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-600-normal.woff",
+      "bytes": 18384,
+      "sha256": "8d1f509774bca963fa02faf674678ce9244474306361ca2798583fa600346df6"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-600-normal.woff2",
+      "bytes": 14172,
+      "sha256": "f7ac6258da20ab7541939b59851155753d1d24f1b30cbcb949077a3faa3d1593"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-700-normal.woff",
+      "bytes": 18412,
+      "sha256": "e5d35fda4759b0d63ebcc6cca0627d98d9208254ce851c85df29e4d12aeafb61"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-700-normal.woff2",
+      "bytes": 14212,
+      "sha256": "d2a12c85a831e4b5db341767d0347fa3d1361d22a1fcb3e361a16b6c90080f71"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-800-normal.woff",
+      "bytes": 17912,
+      "sha256": "ce954acb78379d559111a15d29925f3390b69161b2b1365c38b0f19c76991bac"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-800-normal.woff2",
+      "bytes": 13648,
+      "sha256": "74c161dbcbce7c3590803cc72dc1f63313c360e13367aba5075a7b7b3818ea49"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-400-normal.woff",
+      "bytes": 11316,
+      "sha256": "143798f65cc631e6af5a77f0d34a2597bbef1ff1b24b73f6e6b12c2a79ebeb14"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-400-normal.woff2",
+      "bytes": 8292,
+      "sha256": "72c5354a6f814f3bd38dc3d8caee774f7557b301e69d8428e677b7b73d58d9ee"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-500-normal.woff",
+      "bytes": 11248,
+      "sha256": "f350e57f7de487eafb00f3dfc0ba0389670f929fe3c23d7ced337d94179291ac"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-500-normal.woff2",
+      "bytes": 8192,
+      "sha256": "40787d0c2ff6301cb60b504b6c7a2518c5e0104e6f0f5329c14536d6ed1b884d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-600-normal.woff",
+      "bytes": 11248,
+      "sha256": "80ff78480448f4c2c0f586cb016928554b8cd84b2b95dec5e5f7579274f757a0"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-600-normal.woff2",
+      "bytes": 8304,
+      "sha256": "ff679412842fc3b5ce2dfad626db5261a4e663dcfd1bf1209bdfc61c2b2f37e6"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-700-normal.woff",
+      "bytes": 11352,
+      "sha256": "b707ffc6454e54831a69d6c7db32d427b4a2bb914153c1f850fc4f888be7c35f"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-700-normal.woff2",
+      "bytes": 8276,
+      "sha256": "dc7c46d7eb269cc90650d7f70cf49aafa39a98444e6882cc84096acbc156bfcd"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-800-normal.woff",
+      "bytes": 11108,
+      "sha256": "283da63611967513d643fdfb2d8e4ffa33cce5b8baef5ae06eb117d9327e771e"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-latin-ext-800-normal.woff2",
+      "bytes": 8032,
+      "sha256": "262536c3018a0830a4d3d1b1a8096ac0d53dbd059f6271cca121272ba9d4f948"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-400-normal.woff",
+      "bytes": 6108,
+      "sha256": "1d4631ba5036c35a61c5e342f06d4ffffab85ac0e800fda9e0ceff8ef19aebea"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-400-normal.woff2",
+      "bytes": 4464,
+      "sha256": "dcb0ae6367203b04f930051188cbe02e8096c42db99d5ab6b77f16287fb4fa1b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-500-normal.woff",
+      "bytes": 6060,
+      "sha256": "969fa71a32335bd8c326fa00391d909d01498bfa2c67d0b182e859e5c079e737"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-500-normal.woff2",
+      "bytes": 4320,
+      "sha256": "33f057ea61fa597818617de3b9f66a5a3955fc1b0047e17b0f4887a975c6c732"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-600-normal.woff",
+      "bytes": 6140,
+      "sha256": "628a1c849748530c6f7c02c18bdd3191bc19264e20ad2308a8a954605cdb620b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-600-normal.woff2",
+      "bytes": 4468,
+      "sha256": "bce46331a74572cd723ddb8200a11c00e71370fad490f045564989527469aa3d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-700-normal.woff",
+      "bytes": 6364,
+      "sha256": "19bc9ab84376bb2f88eb858d4293c75dad965c70df7755d0a7f03d10080174b2"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-700-normal.woff2",
+      "bytes": 4552,
+      "sha256": "36c3f8e0a1c59e1bc2fd2a9cabab5b478b488882beebb534e4bd1a8360bf845b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-800-normal.woff",
+      "bytes": 6128,
+      "sha256": "fd1d4d56aa1628213705cb4506ec8b9dfc9f68f3a9ec1fb136fdfaf651f4891e"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/files/manrope-vietnamese-800-normal.woff2",
+      "bytes": 4156,
+      "sha256": "00842d448a57e2d1f513265e2b51248e4e91665b4d010a9c5ba9e72d45d1943f"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/fonts/manrope/manrope.css",
+      "bytes": 12024,
+      "sha256": "51b9a393d3dec3f4443ddd64a6c91ac71d4492332c771e1f0f8702664253695e"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/img/favicon.svg",
+      "bytes": 743,
+      "sha256": "2fe435c1b1e5d44213a1507ac21805e06f27f62db8a88f648cc6b287fd293ad9"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/img/plusquam-ink.png",
+      "bytes": 87220,
+      "sha256": "2498975204c9db73309bf3a61e52310d2befdee84a9e2d35707ca0b6de2cff35"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/img/plusquam-light.png",
+      "bytes": 79317,
+      "sha256": "833e54fe9e8a0d3dce821a432d60210b1ee96ec340304c496869448558695343"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/img/plusquam-mark.png",
+      "bytes": 2203,
+      "sha256": "f7a539797f5eb9265fd33141b5fb474dddd9b618a11bc84724e43392da92e198"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/index.html",
+      "bytes": 3816,
+      "sha256": "57f540f1cc6a9de2e8038e3140ad683dd8c3ff25e18a95837e72c655f7ebe844"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/js/i18n.js",
+      "bytes": 6819,
+      "sha256": "3674cab621bfe1fcb276b57d16dd9ed8ccfdc0ce0ca3bb1c2ba1751f8c7f5fb8"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/js/landing.js",
+      "bytes": 1240,
+      "sha256": "bf7af41738e20a07e52ee8556b6b828ac70062339bd5a34a78998b24309f5adf"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/js/signin.js",
+      "bytes": 3779,
+      "sha256": "104eb5bf6a2f8f9fc49cee75df56d5875fd301174231b94291a1db3f6c8c73d5"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/signin.html",
+      "bytes": 204,
+      "sha256": "4d4e4f6282a6ede82a14bffeaaef5163248d98af795db68ed532da95f97bbf92"
+    },
+    {
+      "path": "code/Plusquam_Staging_Source_Code.zip",
+      "bytes": 1010188,
+      "sha256": "f5b7002d29041d1f21e09de25a03446d95477f6e97117aefb85b58a7ac6d81c1"
+    },
+    {
+      "path": "index.html",
+      "bytes": 21933,
+      "sha256": "9953df02999c38a834f16f41e2f1a9deb26326fe25bd81d84021216ae1a744b2"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 10673,
+      "sha256": "82f9f92aeca9313bee442496fcf0ab698771fff79f2de63311238278c340180f"
+    },
+    {
+      "path": "package.json",
+      "bytes": 307,
+      "sha256": "f0b0911d9d0c0b5c2810ff46f5766a03a79412a4edabf9e9ee1e315b310b4ac1"
+    },
+    {
+      "path": "proxy.js",
+      "bytes": 8402,
+      "sha256": "d540fd9a69745a2f4ca22d9fc2c7f5700878d1273ccfba4700027bc1ee84e879"
+    },
+    {
+      "path": "reports/Plusquam_Frozen_Model_Evaluation_Report.pdf",
+      "bytes": 550621,
+      "sha256": "7dbb2223cc234b696298fe435acc5a70909462c47ede0cb15d70cd98f25ad2f7"
+    },
+    {
+      "path": "reports/Plusquam_Qwen_Groq_Model_Comparison_Summary.pdf",
+      "bytes": 305531,
+      "sha256": "6ab5d39eaa4ee5007790319e5d308b757b410e73a291f6244815c78f71ceb9b1"
+    },
+    {
+      "path": "reports/Plusquam_Staging_Security_Audit_Report.pdf",
+      "bytes": 329935,
+      "sha256": "40270d80014739a733c58437b51b26f4f07e92452b76203c036cc819ce00ee82"
+    },
+    {
+      "path": "reports/Plusquam_Staging_UAT_Acceptance_Signoff.pdf",
+      "bytes": 321805,
+      "sha256": "7b48c5d3b64f00da5cafa2b3aa81bf1ac1db2d41bfaf446afb1061830c2af2eb"
+    },
+    {
+      "path": "reports/Plusquam_Staging_UAT_Report.pdf",
+      "bytes": 314453,
+      "sha256": "113675ab940a5e1cf4cd1aa9c2b347d8ed44e2fef18d5d027afd409077e4f8b0"
+    },
+    {
+      "path": "reports/Plusquam_Visual_Pack.pdf",
+      "bytes": 1085309,
+      "sha256": "87a9f12a9daddd9f33fca86ee618c5cf7d087497bfb0dbe418a1ae97352c4dfe"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 26,
+      "sha256": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1"
+    },
+    {
+      "path": "tests/hub-auth.test.js",
+      "bytes": 5909,
+      "sha256": "10bb1b595e5d638d97e7a31b18ea892199474fde7b01fa6402d8d74c51b6431e"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 406,
+      "sha256": "10848f95a84b7e03119983f7b3ac352b4e6f2444df19fb244f44ba90a2f60d84"
+    }
+  ]
+}

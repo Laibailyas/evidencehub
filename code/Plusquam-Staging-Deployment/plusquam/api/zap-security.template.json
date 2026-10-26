@@ -1,0 +1,140 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Plusquam staging passive ZAP remediation: public GET 404 security headers only",
+  "Resources": {
+    "FallbackLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/plusquam-staging-public-not-found",
+        "RetentionInDays": 30
+      }
+    },
+    "FallbackRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "StagingFallbackLogsOnly",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "FallbackLogGroup",
+                      "Arn"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "PublicNotFoundFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "FunctionName": "plusquam-staging-public-not-found",
+        "Runtime": "python3.13",
+        "Architectures": [
+          "arm64"
+        ],
+        "Handler": "index.lambda_handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "FallbackRole",
+            "Arn"
+          ]
+        },
+        "Timeout": 5,
+        "MemorySize": 128,
+        "Code": {
+          "ZipFile": "\"\"\"Public staging GET fallback; no authentication, storage, or data access.\"\"\"\n\ndef lambda_handler(event, context):\n    return {\n        \"statusCode\": 404,\n        \"headers\": {\n            \"Content-Type\": \"application/json\",\n            \"Strict-Transport-Security\": \"max-age=31536000\",\n            \"Cache-Control\": \"no-store\",\n        },\n        \"body\": '{\"message\":\"Not Found\"}',\n    }\n"
+        }
+      }
+    },
+    "FallbackIntegration": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": "432wuotuz3",
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "PublicNotFoundFunction",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0",
+        "TimeoutInMillis": 5000
+      }
+    },
+    "FallbackPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "PublicNotFoundFunction"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceAccount": "824377689714",
+        "SourceArn": "arn:aws:execute-api:eu-central-1:824377689714:432wuotuz3/*/GET/*"
+      }
+    },
+    "RootGet": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": "432wuotuz3",
+        "RouteKey": "GET /",
+        "AuthorizationType": "NONE",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "FallbackIntegration"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "UnmatchedGet": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": "432wuotuz3",
+        "RouteKey": "GET /{proxy+}",
+        "AuthorizationType": "NONE",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "FallbackIntegration"
+              }
+            ]
+          ]
+        }
+      }
+    }
+  }
+}

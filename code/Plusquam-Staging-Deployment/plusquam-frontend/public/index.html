@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>plusquam — Anmelden</title>
+  <meta name="description" content="FZulG-Bewertung mit EU-Datenresidenz und prüfungssicheren Berichten.">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/signin.css">
+</head>
+<body>
+  <main class="signin-shell">
+    <div class="signin-mesh" aria-hidden="true"></div>
+    <div class="signin-grid" aria-hidden="true"></div>
+
+    <!-- Language switcher (top-right) -->
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button type="button" data-lang-toggle="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang-toggle="en" aria-pressed="false">EN</button>
+    </div>
+
+    <div class="signin-stage">
+
+      <!-- Sign-in card (centered) -->
+      <div class="signin-container glass-panel">
+
+        <div class="signin-logo signin-logo--mobile" aria-label="plusquam">
+          <img src="/img/plusquam-light.png" alt="plusquam" />
+        </div>
+
+        <h1 class="signin-heading" data-i18n="signin.heading">Anmelden</h1>
+        <p class="signin-workspace" data-i18n="signin.workspace">Workspace: FZulG Projekt-Evaluierung</p>
+
+        <!-- Role tab toggle -->
+        <div class="role-toggle" role="tablist" aria-label="Role">
+          <button type="button" data-role="user" class="active" data-i18n="signin.role.user">Nutzer</button>
+          <button type="button" data-role="admin" data-i18n="signin.role.admin">Admin</button>
+        </div>
+
+        <!-- Form -->
+        <form id="signin-form" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="email" data-i18n="signin.email.label">E-Mail</label>
+            <input class="form-input"
+                   id="email" name="email" type="email"
+                   autocomplete="email" required
+                   data-i18n-placeholder="signin.email.placeholder"
+                   placeholder="Geben Sie Ihre E-Mail ein">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password" data-i18n="signin.password.label">Passwort</label>
+            <input class="form-input"
+                   id="password" name="password" type="password"
+                   autocomplete="current-password" required
+                   data-i18n-placeholder="signin.password.placeholder"
+                   placeholder="••••••••">
+            <a class="form-forgot" id="forgot-link" href="#" data-i18n="signin.password.forgot">Passwort vergessen?</a>
+            <p class="form-forgot-msg" id="forgot-msg" hidden data-i18n="signin.password.forgot_msg">
+              Kein automatisches Zurücksetzen — wenden Sie sich an einen plusquam-Admin oder schreiben Sie an research@plusquam.xyz
+            </p>
+          </div>
+
+          <button type="submit" class="signin-button" data-i18n="signin.submit">Anmelden →</button>
+
+          <p class="eu-notice">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span data-i18n="signin.eu_notice">Alle Daten verbleiben in der EU-Infrastruktur</span>
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/runtime-config.js"></script>
+  <script src="/js/signin.js"></script>
+</body>
+</html>
