@@ -134,15 +134,17 @@ function sameOrigin(request, url) {
     .filter(Boolean);
 
   const origin = request.headers.get("origin");
-  if (origin !== null) {
+  if (origin) {
     try {
       const parsed = new URL(origin);
       if (parsed.protocol === "https:" && candidates.includes(parsed.host.toLowerCase())) return true;
     } catch {
-      // Fall back to browser metadata when Origin cannot be parsed.
+      // Fall through to browser fetch metadata below.
     }
-    // Vercel can rewrite every request host while preserving the public Origin.
-    return request.headers.get("sec-fetch-site") === "same-origin";
+    // Vercel can expose a rewritten host to the proxy. In that case Origin
+    // may not match the proxy URL/forwarded host, while Chromium's
+    // Sec-Fetch-Site still correctly identifies an actual same-origin form.
+    return request.headers.get("sec-fetch-site")?.toLowerCase() === "same-origin";
   }
 
   // Some Vercel proxy requests omit Origin. Browser fetch metadata or Referer
