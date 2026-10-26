@@ -27,8 +27,8 @@ function restoreEnv() {
   }
 }
 
-function request(path, { method = "GET", headers = {}, body } = {}) {
-  return new Request(`https://hub.example.invalid${path}`, { method, headers, body });
+function request(path, { url = `https://hub.example.invalid${path}`, method = "GET", headers = {}, body } = {}) {
+  return new Request(url, { method, headers, body });
 }
 
 afterEach(restoreEnv);
@@ -46,9 +46,32 @@ describe("Evidence Hub access gate", () => {
     assert.match(await login.text(), /not configured/i);
   });
 
+  it("renders the login page with the local KRKL logo and Numans font", async () => {
+    setTestCredentials();
+    const result = await proxy(request("/login"));
+    const html = await result.text();
+    assert.equal(result.status, 200);
+    assert.match(html, /assets\/logo\.png/);
+    assert.match(html, /assets\/Numans-Regular\.ttf/);
+    assert.match(html, /font-family:Numans/);
+    assert.match(result.headers.get("content-security-policy"), /img-src 'self'/);
+    assert.match(result.headers.get("content-security-policy"), /font-src 'self'/);
+  });
+
+  it("allows only the local logo and font through before sign-in", async () => {
+    setTestCredentials();
+    for (const path of ["/assets/logo.png", "/assets/Numans-Regular.ttf"]) {
+      const result = await proxy(request(path));
+      assert.equal(result.status, 200, path);
+    }
+    const otherAsset = await proxy(request("/assets/visuals/01_System_Architecture.png"));
+    assert.equal(otherAsset.status, 303);
+    assert.equal(otherAsset.headers.get("location"), "/login");
+  });
+
   it("rejects unauthenticated requests to all static paths", async () => {
     setTestCredentials();
-    for (const path of ["/", "/assets/logo.png", "/reports/UAT_Report.pdf", "/code/source.zip"]) {
+    for (const path of ["/", "/assets/visuals/01_System_Architecture.png", "/reports/UAT_Report.pdf", "/code/source.zip"]) {
       const result = await proxy(request(path));
       assert.equal(result.status, 303, path);
       assert.equal(result.headers.get("location"), "/login", path);
@@ -78,6 +101,45 @@ describe("Evidence Hub access gate", () => {
     assert.match(cookie, /SameSite=Strict/);
     assert.match(cookie, /Path=\//);
     assert.doesNotMatch(cookie, /reviewer@example|synthetic-test/);
+  });
+
+  it("accepts the browser host when Vercel reports an internal request URL", async () => {
+    setTestCredentials();
+    const body = new URLSearchParams({
+      email: "reviewer@example.invalid",
+      password: ["synthetic", "test", "password", "only"].join("-"),
+    });
+    const result = await proxy(request("/__hub/login", {
+      url: "https://internal-vercel.invalid/__hub/login",
+      method: "POST",
+      headers: {
+        host: "evidencehub-fawn.vercel.app",
+        origin: "https://evidencehub-fawn.vercel.app",
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body,
+    }));
+    assert.equal(result.status, 303);
+    assert.equal(result.headers.get("location"), "/");
+    assert.match(result.headers.get("set-cookie"), /HttpOnly/);
+  });
+
+  it("accepts same-origin browser metadata when Origin is omitted", async () => {
+    setTestCredentials();
+    const body = new URLSearchParams({
+      email: "reviewer@example.invalid",
+      password: ["synthetic", "test", "password", "only"].join("-"),
+    });
+    const result = await proxy(request("/__hub/login", {
+      method: "POST",
+      headers: {
+        "sec-fetch-site": "same-origin",
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body,
+    }));
+    assert.equal(result.status, 303);
+    assert.equal(result.headers.get("location"), "/");
   });
 
   it("rejects incorrect credentials and cross-origin login posts", async () => {
