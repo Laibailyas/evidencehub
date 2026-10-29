@@ -1,7 +1,7 @@
 {
   "package": "Plusquam Evidence Hub",
   "environment": "staging only",
-  "updated": "2026-10-26",
+  "updated": "2026-10-28",
   "files": [
     {
       "path": ".gitignore",
@@ -10,8 +10,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1898,
-      "sha256": "cf6ed348f77fc4c22461dbefc21861a6a235e062dc1417ee3b72bcdf7aa3e956"
+      "bytes": 1587,
+      "sha256": "226f99d319e0e1f4029c43c333ff9a9511c713f0cd7e12e828edb5701d4b28e7"
     },
     {
       "path": "assets/Numans-Regular.ttf",
@@ -35,83 +35,68 @@
     },
     {
       "path": "assets/visuals/01_System_Architecture.png",
-      "bytes": 383385,
-      "sha256": "d24771320ec3f3ea3dd1729810ffb2289de13b652c238b6c30f628ed29935300"
+      "bytes": 473875,
+      "sha256": "60440ab967f662c575af434acfbf4c74c242b749001951b71b6e80c6d5f64239"
     },
     {
       "path": "assets/visuals/01_System_Architecture.svg",
-      "bytes": 348584,
-      "sha256": "dd841475cba65d9591339bf5ee9d8eaa76ccef005490179a5d220508583166f6"
+      "bytes": 293925,
+      "sha256": "c582864e9bcdc9e104952458c3ee5c856316c35b011785dc9d926ec960d4ea74"
     },
     {
       "path": "assets/visuals/01_System_Architecture_thumb.jpg",
-      "bytes": 105435,
-      "sha256": "7a4a12fe1f814bb6c9733beb714124c3ef1347290c09d4db59b7a4e5f9086ba6"
+      "bytes": 85103,
+      "sha256": "805d12c5558df9d0a8c968f4094e5977150b6dfe74c80df8999caf07f0cff7e3"
     },
     {
       "path": "assets/visuals/02_Data_and_Request_Flow.png",
-      "bytes": 346670,
-      "sha256": "9c2f2fbbc63ae9a277cbe6fef88d213b90135d43d0ab7d7bb62d1232e2515b93"
+      "bytes": 446763,
+      "sha256": "f9ab197ec292cce1c2fb438e6dcae37506cc24a65c3ce4837715427e6eebc13b"
     },
     {
       "path": "assets/visuals/02_Data_and_Request_Flow.svg",
-      "bytes": 348041,
-      "sha256": "8dd94433eced53280ca4eebdcd04d6fcec7cfd2959e78d1a83e9be961fba3516"
+      "bytes": 292817,
+      "sha256": "ccfa600d4615d134c41c0e55d9cf6ac4d79815a6c48a5b75cee5ee78085164a8"
     },
     {
       "path": "assets/visuals/02_Data_and_Request_Flow_thumb.jpg",
-      "bytes": 106230,
-      "sha256": "530070e4e7db09930d693f00e373b162aa46a20f83d5ccc48510fbd403847116"
+      "bytes": 81269,
+      "sha256": "89131423068c3a10a626ad680ecc29439650ac43c248f836a77f6c7fe74dc0ef"
     },
     {
       "path": "assets/visuals/03_Security_Posture.png",
-      "bytes": 375116,
-      "sha256": "63dd1bf264a29069abdbb2bece1981b316ada91514293023aedfe0b750ef04ac"
+      "bytes": 327680,
+      "sha256": "bf283f45f28a366da938f7ba3443eec4d0158ae95f8c546baed7d0c0e29c58c1"
     },
     {
       "path": "assets/visuals/03_Security_Posture.svg",
-      "bytes": 347817,
-      "sha256": "def2dea0bcf97784f0ba76044320743dd733448f067758c775b6f34ebb2c1234"
+      "bytes": 292739,
+      "sha256": "c2d39aded69cd08eb042853c5aa305e865d9262014bd0392b7d7ff3245166bcf"
     },
     {
       "path": "assets/visuals/03_Security_Posture_thumb.jpg",
-      "bytes": 111924,
-      "sha256": "f5e84b6745a3f87abe34d083f8f3d06e4d46e8c230271b22dc06f266d7dd8081"
+      "bytes": 90357,
+      "sha256": "1ab79430627142d01697b432713b10dd4d7bc330eaa722d86603920af91f950b"
     },
     {
       "path": "assets/visuals/04_UAT_Results.png",
-      "bytes": 286767,
-      "sha256": "51e20803101a685126e6c9679ce88c5047989da127f21405ea689a72735b0bfa"
+      "bytes": 364580,
+      "sha256": "bd0f6fd177fca8c7dc3b63e90624e8df960b6732b465030092398d22bcfb1768"
     },
     {
       "path": "assets/visuals/04_UAT_Results.svg",
-      "bytes": 347307,
-      "sha256": "e90b0b8777da657a9b10782f355f6d69ffe4fa1ba1b2b7115b99f05dd6f26f99"
+      "bytes": 292083,
+      "sha256": "39f6be5026bb1eb0c1260a6dfd516e19e5c7278eeb2a774242088aaf62812158"
     },
     {
       "path": "assets/visuals/04_UAT_Results_thumb.jpg",
-      "bytes": 99045,
-      "sha256": "ca679350cadfac97961d2878c67b4899289a475c309c664f12b0142b7e680bab"
-    },
-    {
-      "path": "assets/visuals/05_Roadmap_and_Timeline.png",
-      "bytes": 312322,
-      "sha256": "5701ce6a71c0dc4b9b235cb7d4bdaa3e2f2a6ef1540423eec979f4af4feb0ec6"
-    },
-    {
-      "path": "assets/visuals/05_Roadmap_and_Timeline.svg",
-      "bytes": 344696,
-      "sha256": "85ea01ed7d0cb56c86b35b56ba7fd0faa5f89401dbfbe869cac973d2e84dfed4"
-    },
-    {
-      "path": "assets/visuals/05_Roadmap_and_Timeline_thumb.jpg",
-      "bytes": 97237,
-      "sha256": "a41f117b68b6a1a7d74faf21a48b8aaa00f7e83e70555b64f88a484a52650123"
+      "bytes": 82264,
+      "sha256": "dba906871e863992ea51fbbace957b3f2851e4ef6d07f102e84c44b9540c2ce6"
     },
     {
       "path": "code/Plusquam-Staging-Deployment/README.md",
-      "bytes": 587,
-      "sha256": "132c4aa329c5528b74ac53e357e4b541df381c4a7ac8def22230c6a8285bb826"
+      "bytes": 1746,
+      "sha256": "e68cf9b95445697b3240ae3df09257c739f968d10d65aca9548e3613fbc48f1c"
     },
     {
       "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/__init__.py",
@@ -845,8 +830,8 @@
     },
     {
       "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/js/i18n.js",
-      "bytes": 6819,
-      "sha256": "3674cab621bfe1fcb276b57d16dd9ed8ccfdc0ce0ca3bb1c2ba1751f8c7f5fb8"
+      "bytes": 6754,
+      "sha256": "09b3ed7fbf2f3b2ab54e6ad1f0880dbfd60bb16b8c415ba56f1bc56b1f9efb9f"
     },
     {
       "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/public/js/landing.js",
@@ -865,13 +850,13 @@
     },
     {
       "path": "code/Plusquam_Staging_Source_Code.zip",
-      "bytes": 1010188,
-      "sha256": "f5b7002d29041d1f21e09de25a03446d95477f6e97117aefb85b58a7ac6d81c1"
+      "bytes": 996562,
+      "sha256": "a504da05c96994b320e08377121e64126ce2efbef6ed4bb9eb8c5bf8b6eb4e9d"
     },
     {
       "path": "index.html",
-      "bytes": 21933,
-      "sha256": "9953df02999c38a834f16f41e2f1a9deb26326fe25bd81d84021216ae1a744b2"
+      "bytes": 21071,
+      "sha256": "beb44704fe22038acede1e59a42165051f6aec64599e99bd8e9d0716f3fb13cd"
     },
     {
       "path": "package-lock.json",
@@ -885,8 +870,8 @@
     },
     {
       "path": "proxy.js",
-      "bytes": 8402,
-      "sha256": "d540fd9a69745a2f4ca22d9fc2c7f5700878d1273ccfba4700027bc1ee84e879"
+      "bytes": 12074,
+      "sha256": "842b83168858407e881956133a7b849c67cf3d01f5bc8b214551902d92a46971"
     },
     {
       "path": "reports/Plusquam_Frozen_Model_Evaluation_Report.pdf",
@@ -900,13 +885,8 @@
     },
     {
       "path": "reports/Plusquam_Staging_Security_Audit_Report.pdf",
-      "bytes": 329935,
-      "sha256": "40270d80014739a733c58437b51b26f4f07e92452b76203c036cc819ce00ee82"
-    },
-    {
-      "path": "reports/Signoff.docx",
-      "bytes": 321805,
-      "sha256": "7b48c5d3b64f00da5cafa2b3aa81bf1ac1db2d41bfaf446afb1061830c2af2eb"
+      "bytes": 348809,
+      "sha256": "0041debe311591771b4bb39d4921b8ffcb9a619b64333fab6d938ba916c25f0c"
     },
     {
       "path": "reports/Plusquam_Staging_UAT_Report.pdf",
@@ -915,8 +895,8 @@
     },
     {
       "path": "reports/Plusquam_Visual_Pack.pdf",
-      "bytes": 1085309,
-      "sha256": "87a9f12a9daddd9f33fca86ee618c5cf7d087497bfb0dbe418a1ae97352c4dfe"
+      "bytes": 740262,
+      "sha256": "18201fc6804809e4bbb21332f6c930043b883eda8b14531b0a8da0a6b1f56e5e"
     },
     {
       "path": "robots.txt",
@@ -925,8 +905,8 @@
     },
     {
       "path": "tests/hub-auth.test.js",
-      "bytes": 5909,
-      "sha256": "10bb1b595e5d638d97e7a31b18ea892199474fde7b01fa6402d8d74c51b6431e"
+      "bytes": 10124,
+      "sha256": "d169e6a9d4771e8ebb491f4a4a6a237aa451a74b44dd2a3354d97573978db71b"
     },
     {
       "path": "vercel.json",
