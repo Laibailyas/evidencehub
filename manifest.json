@@ -1,7 +1,7 @@
 {
   "package": "Plusquam Evidence Hub",
   "environment": "staging only",
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "files": [
     {
       "path": ".gitignore",
@@ -35,203 +35,68 @@
     },
     {
       "path": "assets/visuals/01_System_Architecture.png",
-      "bytes": 473875,
-      "sha256": "60440ab967f662c575af434acfbf4c74c242b749001951b71b6e80c6d5f64239"
+      "bytes": 472689,
+      "sha256": "fd26fa2abd7cd5fae1958fa4cc197ab101e25f4d02f7c31ac252f7377edb75ce"
     },
     {
       "path": "assets/visuals/01_System_Architecture.svg",
-      "bytes": 293925,
-      "sha256": "c582864e9bcdc9e104952458c3ee5c856316c35b011785dc9d926ec960d4ea74"
+      "bytes": 293915,
+      "sha256": "7c56fcdb331420af6474e9191b84e90f5ab0d6de06971997bc7b11dfac6a1177"
     },
     {
       "path": "assets/visuals/01_System_Architecture_thumb.jpg",
-      "bytes": 85103,
-      "sha256": "805d12c5558df9d0a8c968f4094e5977150b6dfe74c80df8999caf07f0cff7e3"
+      "bytes": 84938,
+      "sha256": "971b387d76df2969a87be7031be871b10c223db5e945c6fcf9a26f138289d88a"
     },
     {
       "path": "assets/visuals/02_Data_and_Request_Flow.png",
-      "bytes": 446763,
-      "sha256": "f9ab197ec292cce1c2fb438e6dcae37506cc24a65c3ce4837715427e6eebc13b"
+      "bytes": 444711,
+      "sha256": "d3505eda7a71dc9c852b16f2e3936c79d8cc090755a01c21ebabfbf0bfeb662b"
     },
     {
       "path": "assets/visuals/02_Data_and_Request_Flow.svg",
-      "bytes": 292817,
-      "sha256": "ccfa600d4615d134c41c0e55d9cf6ac4d79815a6c48a5b75cee5ee78085164a8"
+      "bytes": 292807,
+      "sha256": "2f9eafb5e23250ac7252f47ed7746e24bf67ce949c3a3911d7cf3ec38947d0de"
     },
     {
       "path": "assets/visuals/02_Data_and_Request_Flow_thumb.jpg",
-      "bytes": 81269,
-      "sha256": "89131423068c3a10a626ad680ecc29439650ac43c248f836a77f6c7fe74dc0ef"
+      "bytes": 80969,
+      "sha256": "a6e3638417ee4231b1adf48ef472fc4c335f7e1d467076d1901e1d84c582ccc0"
     },
     {
       "path": "assets/visuals/03_Security_Posture.png",
-      "bytes": 327680,
-      "sha256": "bf283f45f28a366da938f7ba3443eec4d0158ae95f8c546baed7d0c0e29c58c1"
+      "bytes": 480776,
+      "sha256": "9d6cbd151d38b67458c8bf7b25203088560727375e6b369b892ee242cfcf476f"
     },
     {
       "path": "assets/visuals/03_Security_Posture.svg",
-      "bytes": 292739,
-      "sha256": "c2d39aded69cd08eb042853c5aa305e865d9262014bd0392b7d7ff3245166bcf"
+      "bytes": 292729,
+      "sha256": "67119fc1954f1dbf7240cfc48543c239e7b95ba3849fda3995e48b8430b8e3c5"
     },
     {
       "path": "assets/visuals/03_Security_Posture_thumb.jpg",
-      "bytes": 90357,
-      "sha256": "1ab79430627142d01697b432713b10dd4d7bc330eaa722d86603920af91f950b"
+      "bytes": 90166,
+      "sha256": "ede2345cedd3e5db11d27da249242ac4a7366b820f86a4cd55f73953f019df8e"
     },
     {
       "path": "assets/visuals/04_UAT_Results.png",
-      "bytes": 364580,
-      "sha256": "bd0f6fd177fca8c7dc3b63e90624e8df960b6732b465030092398d22bcfb1768"
+      "bytes": 362737,
+      "sha256": "cba13ce75a22c14fe3d0b22957d3f939c21b03c4d862ee8ad90f1e8585efba4b"
     },
     {
       "path": "assets/visuals/04_UAT_Results.svg",
-      "bytes": 292083,
-      "sha256": "39f6be5026bb1eb0c1260a6dfd516e19e5c7278eeb2a774242088aaf62812158"
+      "bytes": 292073,
+      "sha256": "19d355b1bc2c1f2a4d7f7365a96f0fa4036a08376ee5befee6c9d18c49de41e4"
     },
     {
       "path": "assets/visuals/04_UAT_Results_thumb.jpg",
-      "bytes": 82264,
-      "sha256": "dba906871e863992ea51fbbace957b3f2851e4ef6d07f102e84c44b9540c2ce6"
+      "bytes": 82063,
+      "sha256": "d3935e094082e6c643be873aa92e6a27939a6ee98caad5f3f90ea752e22a928a"
     },
     {
       "path": "code/Plusquam-Staging-Deployment/README.md",
       "bytes": 1746,
       "sha256": "e68cf9b95445697b3240ae3df09257c739f968d10d65aca9548e3613fbc48f1c"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/__init__.py",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/admin.py",
-      "bytes": 10783,
-      "sha256": "dca8665893d27a0a23b4b1af4e7b2246c23270f429b955a8b3415e7d9beeaae0"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/assess.py",
-      "bytes": 17680,
-      "sha256": "e8bcae0e5c25c585baf2de1b8a27317d51ab65ccb5670a0d3e939ed5764f5763"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/auth.py",
-      "bytes": 4203,
-      "sha256": "c55fb1dc1e9d0987d8f6f1190369a402ebb80ff2c34753d6f370df94e6cb2020"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/cors.py",
-      "bytes": 271,
-      "sha256": "abdc8e5eb14961e7a4a8c4297e7f514a580e436109ca246a747205e2634ce108"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/projects.py",
-      "bytes": 9887,
-      "sha256": "a22d4136d93b9b4cf5fde196ed237ff79519d6cef312d68847148b33e45e07ed"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/public_not_found.py",
-      "bytes": 387,
-      "sha256": "dec2288e7143b0b2c169662e7f136fc47b816093b71c2a5cc798416f6de2d9ca"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/__init__.py",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/auth.py",
-      "bytes": 5080,
-      "sha256": "7d90619f066ff02febe035a50a796a7c461e8c2fcf2cf3f6417793943f1d3c02"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/claude.py",
-      "bytes": 8454,
-      "sha256": "885a5af1e66e42bff16654377f776b1b3407bdb726334c1f877e88e94416a7eb"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/ddb.py",
-      "bytes": 13737,
-      "sha256": "fc3bb90a482cdc849d1dff9497e0abf47563b21c1afb943821331265c2ba7972"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/extract.py",
-      "bytes": 3658,
-      "sha256": "6fdc7a8a35640d609799ec6b720247917196a5311d5de7b0736219d6176872db"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/http.py",
-      "bytes": 3683,
-      "sha256": "00c9aa7868d55634d6f589216b94043d861f6c6bf14f184fbc69f2aacbdc40fb"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/openalex.py",
-      "bytes": 3851,
-      "sha256": "8fe99276e727bb084548e1aef4bd6b8ff50b0d8bda1a11efaad86f6eb5cd46d6"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/pdf_report.py",
-      "bytes": 16341,
-      "sha256": "3193295ae6fd5356759e03898c3a6fd91bac6887ad4c55f040d715a5a53a7d94"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/prompt_defaults.py",
-      "bytes": 9457,
-      "sha256": "d5674851d58377df21022728aa1f55f6fb44ce1514a4c3f04bf2dbf3e1aceb90"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/prompts.py",
-      "bytes": 1359,
-      "sha256": "16cbadb775bf27edbdc4cf16ec180cbfc34f751a103a70b70806855bb777455d"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/validation.py",
-      "bytes": 7195,
-      "sha256": "02375cbb1cff1754bcc2f68b80856b5ee0f50f3940517e9bf357f611cbc8e97a"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/requirements.txt",
-      "bytes": 84,
-      "sha256": "18857220a8084d579df2763672bc8ce732c954f3eab5446e7fcca635b69d38aa"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/template.yaml",
-      "bytes": 16107,
-      "sha256": "d7003edf0376442440583c95aefdfc5a0e152beb0f979e8a255dcc5fc190d972"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/api/zap-security.template.json",
-      "bytes": 3979,
-      "sha256": "65f4520fded0ab4be36ed836d4fcd765df191ff1af9df8e2a6ca11f4013d7798"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/_common.sh",
-      "bytes": 3511,
-      "sha256": "6ceb3a12960817fc8a5818031bf5bcc1422818902cc52d95142f39b50101a36d"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy-all.sh",
-      "bytes": 6318,
-      "sha256": "b89c3756ba0588205f650e87525dcad3a8d5bd593aed37aeeb01a78a1156ea5a"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy-backend.sh",
-      "bytes": 5704,
-      "sha256": "f8527b54b97b81bad313ee802335320339c33f052bc9a5e32af950322bb2ef1b"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy.sh",
-      "bytes": 7582,
-      "sha256": "22a6b2a6be278c7ab7edb219e07963169dc1216f94f8cd42ca90acbbfe266775"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/seed-admin.sh",
-      "bytes": 2499,
-      "sha256": "e192317aa6a93f5f07887cdfe97ef4995bb91ad52f66abdf87ec2cc46dbb285c"
-    },
-    {
-      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/setup-cloudfront.sh",
-      "bytes": 13442,
-      "sha256": "e2ab9c81cbc9cea4d20257754e1f9d7d57399e8ccc2113801724647dea712dca"
     },
     {
       "path": "code/Plusquam-Staging-Deployment/plusquam-frontend/app/.gitignore",
@@ -849,6 +714,141 @@
       "sha256": "4d4e4f6282a6ede82a14bffeaaef5163248d98af795db68ed532da95f97bbf92"
     },
     {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/admin.py",
+      "bytes": 10783,
+      "sha256": "dca8665893d27a0a23b4b1af4e7b2246c23270f429b955a8b3415e7d9beeaae0"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/assess.py",
+      "bytes": 17680,
+      "sha256": "e8bcae0e5c25c585baf2de1b8a27317d51ab65ccb5670a0d3e939ed5764f5763"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/auth.py",
+      "bytes": 4203,
+      "sha256": "c55fb1dc1e9d0987d8f6f1190369a402ebb80ff2c34753d6f370df94e6cb2020"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/cors.py",
+      "bytes": 271,
+      "sha256": "abdc8e5eb14961e7a4a8c4297e7f514a580e436109ca246a747205e2634ce108"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/projects.py",
+      "bytes": 9887,
+      "sha256": "a22d4136d93b9b4cf5fde196ed237ff79519d6cef312d68847148b33e45e07ed"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/handlers/public_not_found.py",
+      "bytes": 387,
+      "sha256": "dec2288e7143b0b2c169662e7f136fc47b816093b71c2a5cc798416f6de2d9ca"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/auth.py",
+      "bytes": 5080,
+      "sha256": "7d90619f066ff02febe035a50a796a7c461e8c2fcf2cf3f6417793943f1d3c02"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/claude.py",
+      "bytes": 8454,
+      "sha256": "885a5af1e66e42bff16654377f776b1b3407bdb726334c1f877e88e94416a7eb"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/ddb.py",
+      "bytes": 13737,
+      "sha256": "fc3bb90a482cdc849d1dff9497e0abf47563b21c1afb943821331265c2ba7972"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/extract.py",
+      "bytes": 3658,
+      "sha256": "6fdc7a8a35640d609799ec6b720247917196a5311d5de7b0736219d6176872db"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/http.py",
+      "bytes": 3683,
+      "sha256": "00c9aa7868d55634d6f589216b94043d861f6c6bf14f184fbc69f2aacbdc40fb"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/openalex.py",
+      "bytes": 3851,
+      "sha256": "8fe99276e727bb084548e1aef4bd6b8ff50b0d8bda1a11efaad86f6eb5cd46d6"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/pdf_report.py",
+      "bytes": 16341,
+      "sha256": "3193295ae6fd5356759e03898c3a6fd91bac6887ad4c55f040d715a5a53a7d94"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/prompt_defaults.py",
+      "bytes": 9457,
+      "sha256": "d5674851d58377df21022728aa1f55f6fb44ce1514a4c3f04bf2dbf3e1aceb90"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/prompts.py",
+      "bytes": 1359,
+      "sha256": "16cbadb775bf27edbdc4cf16ec180cbfc34f751a103a70b70806855bb777455d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/lib/validation.py",
+      "bytes": 7195,
+      "sha256": "02375cbb1cff1754bcc2f68b80856b5ee0f50f3940517e9bf357f611cbc8e97a"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/src/requirements.txt",
+      "bytes": 84,
+      "sha256": "18857220a8084d579df2763672bc8ce732c954f3eab5446e7fcca635b69d38aa"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/template.yaml",
+      "bytes": 16107,
+      "sha256": "d7003edf0376442440583c95aefdfc5a0e152beb0f979e8a255dcc5fc190d972"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/api/zap-security.template.json",
+      "bytes": 3979,
+      "sha256": "65f4520fded0ab4be36ed836d4fcd765df191ff1af9df8e2a6ca11f4013d7798"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/_common.sh",
+      "bytes": 3511,
+      "sha256": "6ceb3a12960817fc8a5818031bf5bcc1422818902cc52d95142f39b50101a36d"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy-all.sh",
+      "bytes": 6318,
+      "sha256": "b89c3756ba0588205f650e87525dcad3a8d5bd593aed37aeeb01a78a1156ea5a"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy-backend.sh",
+      "bytes": 5704,
+      "sha256": "f8527b54b97b81bad313ee802335320339c33f052bc9a5e32af950322bb2ef1b"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/deploy.sh",
+      "bytes": 7582,
+      "sha256": "22a6b2a6be278c7ab7edb219e07963169dc1216f94f8cd42ca90acbbfe266775"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/seed-admin.sh",
+      "bytes": 2499,
+      "sha256": "e192317aa6a93f5f07887cdfe97ef4995bb91ad52f66abdf87ec2cc46dbb285c"
+    },
+    {
+      "path": "code/Plusquam-Staging-Deployment/plusquam/scripts/setup-cloudfront.sh",
+      "bytes": 13442,
+      "sha256": "e2ab9c81cbc9cea4d20257754e1f9d7d57399e8ccc2113801724647dea712dca"
+    },
+    {
       "path": "code/Plusquam_Staging_Source_Code.zip",
       "bytes": 996562,
       "sha256": "a504da05c96994b320e08377121e64126ce2efbef6ed4bb9eb8c5bf8b6eb4e9d"
@@ -895,8 +895,8 @@
     },
     {
       "path": "reports/Plusquam_Visual_Pack.pdf",
-      "bytes": 740262,
-      "sha256": "18201fc6804809e4bbb21332f6c930043b883eda8b14531b0a8da0a6b1f56e5e"
+      "bytes": 739972,
+      "sha256": "2630fb91803d0e8f2c141a23acd14bc1f2ffe9547fdd6f122b04384ed7fa07a4"
     },
     {
       "path": "robots.txt",
